@@ -7,6 +7,7 @@ import glob
 import json
 import sys
 from pyfirmata import Arduino, util
+import keys
 
 chosen_gender = sys.argv[1]
 chosen_age = float(sys.argv[2])
@@ -24,7 +25,6 @@ height = 10
 gender = 'Unknown'
 age = 'Unknown'
 
-KEY = '0f931d0d82414dd39a1054111535338d'  # Replace with a valid Subscription Key here.
 CF.Key.set(KEY)
 
 BASE_URL = 'https://uksouth.api.cognitive.microsoft.com/face/v1.0/'  # Replace with your regional Base URL

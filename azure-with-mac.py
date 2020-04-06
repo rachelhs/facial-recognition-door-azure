@@ -24,10 +24,8 @@ face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 #display live cam feed
 cap = cv2.VideoCapture(0)
 
-timestamp = round(time.time()*10)
 #take and save photo
-def save_image(timestamp):
-	ret, frame = cap.read()
+def save_image(timestamp, frame):
 	snapshot = frame.copy()
 	cv2.imwrite(os.path.join('faces', str(timestamp)+'.jpg'), snapshot)
 	print('take_photo')
@@ -40,16 +38,27 @@ def latest_file():
 	image_stream = open(latest_file, 'r+b')
 	return image_stream
 
-# Detect a face in an image that contains a single face
-latest_image = latest_file()
-print(latest_image)
+while(True):
+	#read cam frame by frame
+	ret, frame = cap.read()	
+	timestamp = round(time.time()*10)
+    #how often to take a picture and analyse
+	frequency = 10
+	if(timestamp%(frequency*10) == 0):
+		save_image(timestamp, frame)
 
-detected_faces = face_client.face.detect_with_stream(latest_image, return_face_attributes=['age', 'gender'])
+		    # Detect a face in an image that contains a single face
+		latest_image = latest_file()
+		detected_faces = face_client.face.detect_with_stream(latest_image, return_face_attributes=['age', 'gender'])
 
-if not detected_faces:
-    raise Exception('No face detected from image')
+		if not detected_faces:
+		    raise Exception('No face detected from image')
 
-age = detected_faces[0].face_attributes.age
-gender = detected_faces[0].face_attributes.gender
+		age = detected_faces[0].face_attributes.age
+		gender = detected_faces[0].face_attributes.gender
 
-print(age, gender)
+		print(age, gender)
+
+cap.release()
+
+

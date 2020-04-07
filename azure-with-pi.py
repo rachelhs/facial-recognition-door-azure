@@ -54,7 +54,9 @@ while(True):
 		save_image(timestamp, frame)
 
 		    # Detect a face in an image that contains a single face
-		latest_image = latest_file()
+		#latest_image = latest_file()
+		#for testing
+		latest_image = open("faces/zuckerberg.jpg",'r+b')
 		detected_faces = face_client.face.detect_with_stream(latest_image, return_face_attributes=['age', 'gender'])
 
 		if not detected_faces:

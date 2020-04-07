@@ -14,11 +14,17 @@ from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, SnapshotObjectType, OperationStatusType
 from io import BytesIO
 import cv2
+import RPi.GPIO as GPIO
 
 KEY = os.environ['FACE_SUBSCRIPTION_KEY']
 ENDPOINT = os.environ['FACE_ENDPOINT']
 
-# Create an authenticated FaceClient.
+#initialise pins on pi
+GPIO.setmode(GPIO.BOARD)
+#magnets are initially on
+GPIO.setup(13, GPIO.OUT, initial=GPIO.HIGH)
+
+#create an authenticated FaceClient.
 face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 
 #display live cam feed
@@ -57,6 +63,11 @@ while(True):
 		age = detected_faces[0].face_attributes.age
 		gender = detected_faces[0].face_attributes.gender
 
+		#turn magnets off for 5 seconds if specific age, gender found 
+		if(age > 29.0):
+			GPIO.output(13, GPIO.LOW)
+			time.sleep(5)
+			GPIO.output(13, GPIO.HIGH)
 		print(age, gender)
 
 cap.release()

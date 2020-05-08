@@ -21,7 +21,7 @@ ENDPOINT = os.environ['FACE_ENDPOINT']
 # Create an authenticated FaceClient.
 face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 
-#display live cam feed
+#start cam
 cap = cv2.VideoCapture(0)
 
 #take and save photo
@@ -51,13 +51,13 @@ while(True):
 		latest_image = latest_file()
 		detected_faces = face_client.face.detect_with_stream(latest_image, return_face_attributes=['age', 'gender'])
 
-		if not detected_faces:
-		    raise Exception('No face detected from image')
-
-		age = detected_faces[0].face_attributes.age
-		gender = detected_faces[0].face_attributes.gender
-
-		print(age, gender)
+		if (detected_faces):
+			age = detected_faces[0].face_attributes.age
+			gender = detected_faces[0].face_attributes.gender
+			print(age, gender)
+		else:
+			print('no face')
+			pass
 
 cap.release()
 

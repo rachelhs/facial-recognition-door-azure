@@ -12,11 +12,14 @@ from PIL import Image, ImageDraw
 from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, SnapshotObjectType, OperationStatusType
-from io import BytesIO
 import cv2
+from gpiozero import LED
 
 KEY = os.environ['FACE_SUBSCRIPTION_KEY']
 ENDPOINT = os.environ['FACE_ENDPOINT']
+
+#initialise GPIO pin 17 to trigger magnets
+magnets = LED(17)
 
 # Create an authenticated FaceClient.
 face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
@@ -43,10 +46,13 @@ def latest_file():
 	return image_stream
 
 while(True):
+	#magnets normally on
+	magnets.on()
+
 	#read cam frame by frame
 	ret, frame = cap.read()	
 	timestamp = round(time.time()*10)
-
+	
 	#display live cam feed to screen, quit if q pressed
 	cv2.imshow('Target', frame)
 	if cv2.waitKey(1) & 0xFF == ord('q'):
@@ -65,6 +71,9 @@ while(True):
 			age = detected_faces[0].face_attributes.age
 			gender = detected_faces[0].face_attributes.gender
 			print(age, gender)
+			if (age == 25 and gender == "female"):
+				magnets.off()
+				time.sleep(1)
 		else:
 			print('no face')
 			pass

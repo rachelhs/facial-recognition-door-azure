@@ -24,6 +24,10 @@ face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
 #start cam
 cap = cv2.VideoCapture(0)
 
+#create fullscreen
+cv2.namedWindow("Target", cv2.WND_PROP_FULLSCREEN)
+cv2.setWindowProperty("Target",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
+
 #take and save photo
 def save_image(timestamp, frame):
 	snapshot = frame.copy()
@@ -42,7 +46,13 @@ while(True):
 	#read cam frame by frame
 	ret, frame = cap.read()	
 	timestamp = round(time.time()*10)
-    #how often to take a picture and analyse
+
+	#display live cam feed to screen, quit if q pressed
+	cv2.imshow('Target', frame)
+	if cv2.waitKey(1) & 0xFF == ord('q'):
+		break
+
+    	#how often to take a picture and analyse
 	frequency = 10
 	if(timestamp%(frequency*10) == 0):
 		save_image(timestamp, frame)
@@ -60,5 +70,5 @@ while(True):
 			pass
 
 cap.release()
-
+cv2.destroyAllWindows()
 

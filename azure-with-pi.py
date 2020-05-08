@@ -13,13 +13,19 @@ from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, SnapshotObjectType, OperationStatusType
 import cv2
-from gpiozero import LED
+from gpiozero import LED, Button
+import random
 
 KEY = os.environ['FACE_SUBSCRIPTION_KEY']
 ENDPOINT = os.environ['FACE_ENDPOINT']
 
+#set initial age and gender states
+age = 25
+gender = "female"
+
 #initialise GPIO pin 17 to trigger magnets
 magnets = LED(17)
+button = Button(2)
 
 # Create an authenticated FaceClient.
 face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
@@ -45,7 +51,17 @@ def latest_file():
 	image_stream = open(latest_file, 'r+b')
 	return image_stream
 
+#select random persona on doorbell press
+def random_persona():
+	gender = random.choice(['female', 'male', 'genderless'])
+	age = random.randrange(100)
+
 while(True):
+	#for testing generate random personas automatically
+	#age, gender = random_persona()
+	button.when_pressed = random_persona()
+
+
 	#magnets normally on
 	magnets.on()
 
@@ -68,12 +84,13 @@ while(True):
 		detected_faces = face_client.face.detect_with_stream(latest_image, return_face_attributes=['age', 'gender'])
 
 		if (detected_faces):
-			age = detected_faces[0].face_attributes.age
-			gender = detected_faces[0].face_attributes.gender
-			print(age, gender)
-			if (age == 25 and gender == "female"):
+			detected_age = detected_faces[0].face_attributes.age
+			detected_gender = detected_faces[0].face_attributes.gender
+			print('target age', age, 'target gender', gender)
+			print('detected age', detected_age, 'detected gender', detected_gender)
+			if (detected_age == age and detected_gender == gender):
 				magnets.off()
-				time.sleep(1)
+				time.sleep(3)
 		else:
 			print('no face')
 			pass

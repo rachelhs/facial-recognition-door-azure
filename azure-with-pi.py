@@ -13,8 +13,8 @@ from azure.cognitiveservices.vision.face import FaceClient
 from msrest.authentication import CognitiveServicesCredentials
 from azure.cognitiveservices.vision.face.models import TrainingStatusType, Person, SnapshotObjectType, OperationStatusType
 import cv2
-from gpiozero import LED, Button
 import random
+import RPi.GPIO as GPIO
 
 KEY = os.environ['FACE_SUBSCRIPTION_KEY']
 ENDPOINT = os.environ['FACE_ENDPOINT']
@@ -23,9 +23,10 @@ ENDPOINT = os.environ['FACE_ENDPOINT']
 age = 25
 gender = "female"
 
-#initialise GPIO pin 17 to trigger magnets
-magnets = LED(17)
-button = Button(2)
+#initialise board pin 11 to trigger magnets and 10 for doorbell
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.OUT, initial=GPIO.HIGH)
+GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Create an authenticated FaceClient.
 face_client = FaceClient(ENDPOINT, CognitiveServicesCredentials(KEY))
@@ -55,15 +56,17 @@ def latest_file():
 def random_persona():
 	gender = random.choice(['female', 'male', 'genderless'])
 	age = random.randrange(100)
+	return age, gender
 
 while(True):
 	#for testing generate random personas automatically
 	#age, gender = random_persona()
-	button.when_pressed = random_persona()
-
-
+	if GPIO.input(10) == GPIO.HIGH:
+		print("doorbell pressed")
+		age, gender = random_persona()
+		print(age, gender)
 	#magnets normally on
-	magnets.on()
+	GPIO.output(11, GPIO.HIGH)
 
 	#read cam frame by frame
 	ret, frame = cap.read()	
@@ -89,7 +92,7 @@ while(True):
 			print('target age', age, 'target gender', gender)
 			print('detected age', detected_age, 'detected gender', detected_gender)
 			if (detected_age == age and detected_gender == gender):
-				magnets.off()
+				GPIO.output(11, GPIO.LOW)
 				time.sleep(3)
 		else:
 			print('no face')

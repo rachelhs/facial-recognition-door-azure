@@ -25,7 +25,7 @@ gender = "female"
 
 #initialise board pin 11 to trigger magnets and 10 for doorbell
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(11, GPIO.OUT, initial=GPIO.HIGH)
+GPIO.setup(37, GPIO.OUT, initial=GPIO.HIGH)
 GPIO.setup(10, GPIO.IN, pull_up_down=GPIO.PUD_DOWN)
 
 # Create an authenticated FaceClient.
@@ -66,7 +66,7 @@ while(True):
 		age, gender = random_persona()
 		print(age, gender)
 	#magnets normally on
-	GPIO.output(11, GPIO.HIGH)
+	GPIO.output(37, GPIO.HIGH)
 
 	#read cam frame by frame
 	ret, frame = cap.read()	
@@ -92,7 +92,7 @@ while(True):
 			print('target age', age, 'target gender', gender)
 			print('detected age', detected_age, 'detected gender', detected_gender)
 			if (detected_age == age and detected_gender == gender):
-				GPIO.output(11, GPIO.LOW)
+				GPIO.output(37, GPIO.LOW)
 				time.sleep(3)
 		else:
 			print('no face')

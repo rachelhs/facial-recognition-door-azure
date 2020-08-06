@@ -103,9 +103,17 @@ def display_last_image():
 	background[0:last_photo_width, 0:last_photo_height] = last_img
 	return latest_image_stream
 
+#display yes / no box
+def display_yes_no():
+	if (enter == False):
+		cv2.rectangle(background, (0, 290), (100, 390), (0, 0, 255), -1)
+	else:
+		cv2.rectangle(background, (0, 290), (100, 390), (0, 255, 0), -1)
+
 #display initial taget age and gender and image
 display_target_cat()
 display_last_image()
+display_yes_no()
 
 while(True):
 	#for testing generate random personas automatically
@@ -127,12 +135,6 @@ while(True):
 	#draw it on the screen
 	draw_frame = cv2.resize(frame, (200, 150))
 	background[0: 150, 300: 500] = draw_frame
-
-	#display yes / no box
-	if (enter == False):
-		cv2.rectangle(background, (0, 290), (100, 390), (0, 0, 255), -1)
-	else:
-		cv2.rectangle(background, (0, 290), (100, 390), (0, 255, 0), -1)
 	
 	#display live cam feed to screen, quit if q pressed
 	cv2.imshow('Target', background)
@@ -154,11 +156,13 @@ while(True):
 			if (detected_age == age and detected_gender == gender):
 				enter = True
 				display_last_cat()
+				display_yes_no()
 				GPIO.output(37, GPIO.LOW)
 				time.sleep(3)
 		else:
 			enter = False
 			display_last_cat()
+			display_yes_no()
 			pass
 
 cap.release()

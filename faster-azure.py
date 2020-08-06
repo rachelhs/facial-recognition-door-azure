@@ -101,6 +101,7 @@ def display_last_image():
 
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
 	background[0:last_photo_width, 0:last_photo_height] = last_img
+	return latest_image_stream
 
 #display initial taget age and gender and image
 display_target_cat()
@@ -143,10 +144,9 @@ while(True):
 	frequency = 10
 	if(timestamp%(frequency*10) == 0):
 		save_image(timestamp, just_capture)
-
+		latest_image_stream = display_last_image()
 		# Detect a face in an image that contains a single face
 		detected_faces = face_client.face.detect_with_stream(latest_image_stream, return_face_attributes=['age', 'gender'])
-		display_last_image()
 
 		if (detected_faces):
 			detected_age = detected_faces[0].face_attributes.age

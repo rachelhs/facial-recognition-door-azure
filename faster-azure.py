@@ -73,6 +73,13 @@ def GenerateText(size, fontsize, bg, fg, text):
 	#change to BGR for opencv
 	return cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
+#display age and gender from last photo categorisation
+def display_last_cat():
+	last_gender_text = GenerateText((200, 40), 12, 'cyan', 'magenta', f"Gender: {detected_gender}")
+	background[130:170, 0:200] = last_gender_text
+	last_age_text = GenerateText((100, 40), 12, 'yellow', 'black', f"Gender: {detected_age}")
+	background[170:210, 0:100] = last_age_text
+
 while(True):
 	#for testing generate random personas automatically
 	#age, gender = random_persona()
@@ -133,7 +140,7 @@ while(True):
 
     	#how often to take a picture and analyse
 	frequency = 10
-	if(timestamp%(frequency*10) == 0):
+	if (timestamp%(frequency*10) == 0):
 		save_image(timestamp, just_capture)
 
 		    # Detect a face in an image that contains a single face
@@ -146,11 +153,13 @@ while(True):
 			print('detected age', detected_age, 'detected gender', detected_gender)
 			if (detected_age == age and detected_gender == gender):
 				enter = True
+                display_last_cat()
 				GPIO.output(37, GPIO.LOW)
 				time.sleep(3)
 		else:
 			print('no face')
 			enter = False
+            display_last_cat()
 			pass
 
 cap.release()

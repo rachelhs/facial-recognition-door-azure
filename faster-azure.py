@@ -140,7 +140,7 @@ while(True):
 
     	#how often to take a picture and analyse
 	frequency = 10
-	if (timestamp%(frequency*10) == 0):
+	if(timestamp%(frequency*10) == 0):
 		save_image(timestamp, just_capture)
 
 		    # Detect a face in an image that contains a single face
@@ -153,13 +153,13 @@ while(True):
 			print('detected age', detected_age, 'detected gender', detected_gender)
 			if (detected_age == age and detected_gender == gender):
 				enter = True
-                display_last_cat()
+				display_last_cat()
 				GPIO.output(37, GPIO.LOW)
 				time.sleep(3)
 		else:
 			print('no face')
 			enter = False
-            display_last_cat()
+			display_last_cat()
 			pass
 
 cap.release()

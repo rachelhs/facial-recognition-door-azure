@@ -143,7 +143,7 @@ while(True):
 		break
 
     #how often to take a picture and analyse
-	frequency = 10
+	frequency = 5
 	if(timestamp%(frequency*10) == 0):
 		save_image(timestamp, just_capture)
 		latest_image_stream = display_last_image()

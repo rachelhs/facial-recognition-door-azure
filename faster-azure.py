@@ -102,8 +102,9 @@ def display_last_image():
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
 	background[0:last_photo_width, 0:last_photo_height] = last_img
 
-#display initial taget age and gender
+#display initial taget age and gender and image
 display_target_cat()
+display_last_image()
 
 while(True):
 	#for testing generate random personas automatically

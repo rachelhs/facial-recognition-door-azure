@@ -141,8 +141,8 @@ while(True):
 		detected_faces = face_client.face.detect_with_stream(latest_image_stream, return_face_attributes=['age', 'gender'])
 	
         if (detected_faces):
-        detected_age = detected_faces[0].face_attributes.age
-		detected_gender = detected_faces[0].face_attributes.gender
+            detected_age = detected_faces[0].face_attributes.age
+		    detected_gender = detected_faces[0].face_attributes.gender
             if (detected_age == age and detected_gender == gender):
 				enter = True
 				GPIO.output(37, GPIO.LOW)

@@ -91,6 +91,17 @@ def display_last_cat():
 	last_age_text = GenerateText((100, 40), 12, 'yellow', 'black', f"Gender: {detected_age}")
 	background[170:210, 0:100] = last_age_text
 
+#display last photo
+def display_last_image():
+	latest_image_stream, latest_image_string = latest_file()
+	latest_image = cv2.imread(latest_image_string)
+
+	last_photo_width = 130
+	last_photo_height = 130
+
+	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
+	background[0:last_photo_width, 0:last_photo_height] = last_img
+
 #display initial taget age and gender
 display_target_cat()
 
@@ -115,16 +126,6 @@ while(True):
 	draw_frame = cv2.resize(frame, (200, 150))
 	background[0: 150, 300: 500] = draw_frame
 
-	#display last photo
-	latest_image_stream, latest_image_string = latest_file()
-	latest_image = cv2.imread(latest_image_string)
-
-	last_photo_width = 130
-	last_photo_height = 130
-
-	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
-	background[0:last_photo_width, 0:last_photo_height] = last_img
-
 	#display yes / no box
 	if (enter == False):
 		cv2.rectangle(background, (0, 290), (100, 390), (0, 0, 255), -1)
@@ -137,13 +138,14 @@ while(True):
 	if cv2.waitKey(1) & 0xFF == ord('q'):
 		break
 
-    	#how often to take a picture and analyse
+    #how often to take a picture and analyse
 	frequency = 10
 	if(timestamp%(frequency*10) == 0):
 		save_image(timestamp, just_capture)
 
 		# Detect a face in an image that contains a single face
 		detected_faces = face_client.face.detect_with_stream(latest_image_stream, return_face_attributes=['age', 'gender'])
+		display_last_image()
 
 		if (detected_faces):
 			detected_age = detected_faces[0].face_attributes.age

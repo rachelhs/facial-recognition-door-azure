@@ -77,12 +77,22 @@ def GenerateText(size, fontsize, bg, fg, text):
 	#change to BGR for opencv
 	return cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
+#display target age and target gender
+def display_target_cat()
+	target_gender_text = GenerateText((200, 40), 12, 'red', 'white', f"Target Gender: {gender}")
+	background[210:250, 0:200] = target_gender_text
+	target_age_text = GenerateText((100, 40), 12, 'white', 'orange', f"Target Age: {age}")
+	background[250:290, 0:100] = target_age_text
+
 #display age and gender from last photo categorisation
 def display_last_cat():
 	last_gender_text = GenerateText((200, 40), 12, 'cyan', 'magenta', f"Gender: {detected_gender}")
 	background[130:170, 0:200] = last_gender_text
 	last_age_text = GenerateText((100, 40), 12, 'yellow', 'black', f"Gender: {detected_age}")
 	background[170:210, 0:100] = last_age_text
+
+#display initial taget age and gender
+display_target_cat()
 
 while(True):
 	#for testing generate random personas automatically
@@ -91,6 +101,7 @@ while(True):
 		print("doorbell pressed")
 		age, gender = random_persona()
 		print(age, gender)
+		display_target_cat()
 	#magnets normally on
 	GPIO.output(37, GPIO.HIGH)
 
@@ -113,12 +124,6 @@ while(True):
 
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
 	background[0:last_photo_width, 0:last_photo_height] = last_img
-
-	#display target age and target gender
-	target_gender_text = GenerateText((200, 40), 12, 'red', 'white', f"Target Gender: {gender}")
-	background[210:250, 0:200] = target_gender_text
-	target_age_text = GenerateText((100, 40), 12, 'white', 'orange', f"Target Age: {age}")
-	background[250:290, 0:100] = target_age_text
 
 	#display yes / no box
 	if (enter == False):

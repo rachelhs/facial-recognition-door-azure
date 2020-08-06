@@ -27,6 +27,10 @@ detected_age = 0
 detected_gender = "none"
 enter = False
 
+#draw background for display
+canvas = Image.new('RGB', (800, 480), (150, 230, 180))
+background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
+
 #initialise board pin 11 to trigger magnets and 10 for doorbell
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(37, GPIO.OUT, initial=GPIO.HIGH)
@@ -73,6 +77,13 @@ def GenerateText(size, fontsize, bg, fg, text):
 	#change to BGR for opencv
 	return cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
+#display age and gender from last photo categorisation
+def display_last_cat(detected_age, detected_gender):
+	last_gender_text = GenerateText((200, 40), 12, 'cyan', 'magenta', f"Gender: {detected_gender}")
+	background[130:170, 0:200] = last_gender_text
+	last_age_text = GenerateText((100, 40), 12, 'yellow', 'black', f"Gender: {detected_age}")
+	background[170:210, 0:100] = last_age_text
+
 while(True):
 	#for testing generate random personas automatically
 	#age, gender = random_persona()
@@ -82,10 +93,6 @@ while(True):
 		print(age, gender)
 	#magnets normally on
 	GPIO.output(37, GPIO.HIGH)
-
-	#draw background for display
-	canvas = Image.new('RGB', (800, 480), (150, 230, 180))
-	background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
 	#read cam frame by frame
 	ret, frame = cap.read()
@@ -107,12 +114,6 @@ while(True):
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
 	background[0:last_photo_width, 0:last_photo_height] = last_img
 
-	#display age and gender from last photo categorisation
-	last_gender_text = GenerateText((200, 40), 12, 'cyan', 'magenta', f"Gender: {detected_gender}")
-	background[130:170, 0:200] = last_gender_text
-	last_age_text = GenerateText((100, 40), 12, 'yellow', 'black', f"Gender: {detected_age}")
-	background[170:210, 0:100] = last_age_text
-
 	#display target age and target gender
 	target_gender_text = GenerateText((200, 40), 12, 'red', 'white', f"Target Gender: {gender}")
 	background[210:250, 0:200] = target_gender_text
@@ -131,28 +132,27 @@ while(True):
 	if cv2.waitKey(1) & 0xFF == ord('q'):
 		break
 
-    	#how often to take a picture and analyse
+    #how often to take a picture and analyse
 	frequency = 10
 	if(timestamp%(frequency*10) == 0):
 		save_image(timestamp, just_capture)
 
-		    # Detect a face in an image that contains a single face
+		# Detect a face in an image that contains a single face
 		detected_faces = face_client.face.detect_with_stream(latest_image_stream, return_face_attributes=['age', 'gender'])
-
-		if (detected_faces):
-			detected_age = detected_faces[0].face_attributes.age
-			detected_gender = detected_faces[0].face_attributes.gender
-			print('target age', age, 'target gender', gender)
-			print('detected age', detected_age, 'detected gender', detected_gender)
+		detected_age = detected_faces[0].face_attributes.age
+		detected_gender = detected_faces[0].face_attributes.gender
+	
+        if (detected_faces):
 			if (detected_age == age and detected_gender == gender):
 				enter = True
 				GPIO.output(37, GPIO.LOW)
+                display_last_cat(detected_age, detected_gender)
 				time.sleep(3)
 		else:
 			print('no face')
 			enter = False
+            display_last_cat(detected_age, detected_gender)
 			pass
 
 cap.release()
 cv2.destroyAllWindows()
-

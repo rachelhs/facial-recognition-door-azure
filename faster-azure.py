@@ -78,7 +78,7 @@ def GenerateText(size, fontsize, bg, fg, text):
 	return cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
 #display target age and target gender
-def display_target_cat()
+def display_target_cat():
 	target_gender_text = GenerateText((200, 40), 12, 'red', 'white', f"Target Gender: {gender}")
 	background[210:250, 0:200] = target_gender_text
 	target_age_text = GenerateText((100, 40), 12, 'white', 'orange', f"Target Age: {age}")

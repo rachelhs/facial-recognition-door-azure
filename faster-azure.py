@@ -27,6 +27,10 @@ detected_age = 0
 detected_gender = "none"
 enter = False
 
+#draw background for display
+canvas = Image.new('RGB', (800, 480), (150, 230, 180))
+background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
+
 #initialise board pin 11 to trigger magnets and 10 for doorbell
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(37, GPIO.OUT, initial=GPIO.HIGH)
@@ -90,10 +94,6 @@ while(True):
 	#magnets normally on
 	GPIO.output(37, GPIO.HIGH)
 
-	#draw background for display
-	canvas = Image.new('RGB', (800, 480), (150, 230, 180))
-	background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
-
 	#read cam frame by frame
 	ret, frame = cap.read()
 	#turn it up the right way
@@ -149,7 +149,6 @@ while(True):
 				GPIO.output(37, GPIO.LOW)
 				time.sleep(3)
 		else:
-			print('no face')
 			enter = False
 			display_last_cat()
 			pass

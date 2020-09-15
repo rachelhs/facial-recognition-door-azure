@@ -27,7 +27,7 @@ detected_age = 0
 detected_gender = "none"
 enter = False
 
-#draw background for display
+#draw background for display (mode, (w, h), colour)
 canvas = Image.new('RGB', (800, 480), (150, 230, 180))
 background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
@@ -44,7 +44,8 @@ cap = cv2.VideoCapture(0)
 
 #create fullscreen
 cv2.namedWindow("Target", cv2.WND_PROP_FULLSCREEN)
-cv2.setWindowProperty("Target",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
+cv2.SetWindowLong(win_handle, GWL_STYLE, 0)
+#cv2.setWindowProperty("Target",cv2.WND_PROP_FULLSCREEN,cv2.WINDOW_FULLSCREEN)
 
 #take and save photo
 def save_image(timestamp, frame):

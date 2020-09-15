@@ -115,7 +115,7 @@ def display_yes_no():
 		cv2.rectangle(background, (0, 290), (100, 390), (0, 255, 0), -1)
 
 #https://stackoverflow.com/questions/18973103/how-to-draw-a-rounded-rectangle-rectangle-with-rounded-corners-with-opencv
-def rounded_rectangle(src, top_left, bottom_right, radius=1, color, thickness, line_type=cv2.LINE_AA):
+def rounded_rectangle(src, top_left, bottom_right, radius=1, color=222, thickness=1, line_type=cv2.LINE_AA):
 
     #  corners:
     #  p1 - p2

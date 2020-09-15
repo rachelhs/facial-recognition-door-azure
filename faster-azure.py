@@ -180,12 +180,11 @@ while(True):
 
 	#draw current frame on this part of background
 	background[95: 455, 410: 770] = draw_frame
-	#draw white curved rectangle to curve corners
-	black_rectangle = np.zeros(shape=(360, 360, 3))
+	#draw black border
 	top_left = (0, 0)
 	bottom_right = (360, 360)
-	curved_corners_white = rounded_rectangle(black_rectangle, top_left, bottom_right, color=(255, 255, 255), radius=0.25, thickness=60)
-	background[95: 455, 410: 770] = curved_corners_white
+	black_border = rounded_rectangle(draw_frame, top_left, bottom_right, color=(0, 0, 0), radius=0.25, thickness=1)
+	background[95: 455, 410: 770] = draw_frame
 
 	#display live cam feed to screen, quit if q pressed
 	cv2.imshow('Target', background)

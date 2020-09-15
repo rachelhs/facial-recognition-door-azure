@@ -26,6 +26,7 @@ gender = "female"
 detected_age = 0
 detected_gender = "none"
 enter = False
+fontsize = 20
 
 #draw background for display (mode, (w, h), colour)
 canvas = Image.new('RGB', (800, 600), (255, 255, 255))
@@ -82,16 +83,16 @@ def GenerateText(size, fontsize, bg, fg, text):
 
 #display target age and target gender
 def display_target_cat():
-	target_gender_text = GenerateText((200, 40), 12, 'red', 'white', f"Target Gender: {gender}")
+	target_gender_text = GenerateText((200, 40), fontsize, 'red', 'white', f"Target Gender: {gender}")
 	background[210:250, 0:200] = target_gender_text
-	target_age_text = GenerateText((100, 40), 12, 'white', 'orange', f"Target Age: {age}")
+	target_age_text = GenerateText((100, 40), fontsize, 'white', 'orange', f"Target Age: {age}")
 	background[250:290, 0:100] = target_age_text
 
 #display age and gender from last photo categorisation
 def display_last_cat():
-	last_gender_text = GenerateText((200, 40), 12, 'cyan', 'magenta', f"Gender: {detected_gender}")
+	last_gender_text = GenerateText((200, 40), fontsize, 'cyan', 'magenta', f"Gender: {detected_gender}")
 	background[130:170, 0:200] = last_gender_text
-	last_age_text = GenerateText((100, 40), 12, 'yellow', 'black', f"Gender: {detected_age}")
+	last_age_text = GenerateText((100, 40), fontsize, 'yellow', 'black', f"Gender: {detected_age}")
 	background[170:210, 0:100] = last_age_text
 
 #display last photo

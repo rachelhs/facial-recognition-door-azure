@@ -196,7 +196,7 @@ while(True):
 	top_left = (0, 0)
 	bottom_right = (360, 360)
 	color=(0, 0, 0)
-	draw_frame = rounded_rectangle(draw_frame, top_left, bottom_right, color=color, radius=0.5, thickness=-1)
+	draw_frame = rounded_rectangle(draw_frame, top_left, bottom_right, color=color, radius=0.5, thickness=1)
 
 
 	background[95: 455, 410: 770] = draw_frame

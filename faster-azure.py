@@ -28,7 +28,7 @@ detected_gender = "none"
 enter = False
 
 #draw background for display (mode, (w, h), colour)
-canvas = Image.new('RGB', (850, 650), (150, 230, 180))
+canvas = Image.new('RGB', (800, 600), (255, 255, 255))
 background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
 #initialise board pin 11 to trigger magnets and 10 for doorbell
@@ -72,8 +72,9 @@ def GenerateText(size, fontsize, bg, fg, text):
 	#generate a piece of canvas and draw text on it
 	canvas = Image.new('RGB', size, bg)
 	draw = ImageDraw.Draw(canvas)
-	monospace = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSansBoldOblique.ttf", fontsize)
-	draw.text((10, 10), text, fg, font=monospace)
+	#monospace = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSansBoldOblique.ttf", fontsize)
+	grotesk = ImageFont("fonts/PxGrotesk-Screen.otf", fontsize)
+	draw.text((10, 10), text, fg, font=grotesk)
 	#change to BGR for opencv
 	return cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 

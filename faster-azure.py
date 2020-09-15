@@ -137,8 +137,9 @@ while(True):
 	just_capture = frame.copy()	
 	timestamp = round(time.time()*10)
 	#draw it on the screen
+	#[(y0, yn), (x0, xn)]
 	draw_frame = cv2.resize(frame, (360, 360))
-	background[410: 770, 95: 455] = draw_frame
+	background[95: 455, 410: 770] = draw_frame
 	
 	#display live cam feed to screen, quit if q pressed
 	cv2.imshow('Target', background)

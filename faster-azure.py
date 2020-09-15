@@ -184,7 +184,7 @@ while(True):
 	top_left = (0, 0)
 	bottom_right = (360, 360)
 	black_border = rounded_rectangle(draw_frame, top_left, bottom_right, color=(0, 0, 0), radius=0.25, thickness=1)
-	white_boder = rounded_rectangle(draw_frame, top_left, bottom_right, color=(255, 255, 255), radius=0.25, thickness=50)
+	white_boder = rounded_rectangle(black_border, top_left, bottom_right, color=(255, 255, 255), radius=0.25, thickness=50)
 	background[95: 455, 410: 770] = draw_frame
 
 	#display live cam feed to screen, quit if q pressed

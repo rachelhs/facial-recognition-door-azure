@@ -174,13 +174,18 @@ while(True):
 	#[(y0, yn), (x0, xn)]
 	draw_frame = cv2.resize(frame, (360, 360))
 
+
+	#draw_frame1 = rounded_rectangle(draw_frame, top_left, bottom_right, color=color, radius=0.25, thickness=60)
+	#draw_frame2 = rounded_rectangle(draw_frame, top_left, bottom_right, color=(0, 0, 0), radius=0.25,thickness=1)  
+
+	#draw current frame on this part of background
+	background[95: 455, 410: 770] = draw_frame
+	#draw white curved rectangle to curve corners
+	black_rectangle = np.zeros(360, 360, 3)
 	top_left = (0, 0)
 	bottom_right = (360, 360)
-	color=(255, 255, 255)
-	draw_frame1 = rounded_rectangle(draw_frame, top_left, bottom_right, color=color, radius=0.25, thickness=60)
-	draw_frame2 = rounded_rectangle(draw_frame, top_left, bottom_right, color=(0, 0, 0), radius=0.25,thickness=1)  
-
-	background[95: 455, 410: 770] = draw_frame1
+	curved_corners_white = rounded_rectangle(black_rectangle, top_left, bottom_right, color=(255, 255, 255), radius=0.25, thickness=60)
+	background[95: 455, 410: 770] = curved_corners_white
 
 	#display live cam feed to screen, quit if q pressed
 	cv2.imshow('Target', background)

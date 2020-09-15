@@ -181,7 +181,7 @@ while(True):
 	#draw current frame on this part of background
 	background[95: 455, 410: 770] = draw_frame
 	#draw white curved rectangle to curve corners
-	black_rectangle = np.zeros(360, 360)
+	black_rectangle = np.zeros((360, 360))
 	top_left = (0, 0)
 	bottom_right = (360, 360)
 	curved_corners_white = rounded_rectangle(black_rectangle, top_left, bottom_right, color=(255, 255, 255), radius=0.25, thickness=60)

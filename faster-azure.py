@@ -28,7 +28,7 @@ detected_gender = "none"
 enter = False
 
 #draw background for display (mode, (w, h), colour)
-canvas = Image.new('RGB', (800, 580), (150, 230, 180))
+canvas = Image.new('RGB', (800, 650), (150, 230, 180))
 background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
 #initialise board pin 11 to trigger magnets and 10 for doorbell

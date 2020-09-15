@@ -2,7 +2,7 @@ import numpy as np
 import cv2
 from tkinter import *
 #import tkinter as tk
-from PIL import Image, ImageTk
+from PIL import Image
 import sys
 
 window = Tk()  #Makes main window
@@ -19,7 +19,7 @@ def show_frame():
     #frame = cv2.flip(frame, 1)
     cv2image = cv2.cvtColor(frame, cv2.COLOR_BGR2RGBA)
     img = Image.fromarray(cv2image)
-    imgtk = ImageTk.PhotoImage(master = display1, image=img)
+    imgtk = Image.PhotoImage(master = display1, image=img)
     display1.imgtk = imgtk #Shows frame for display 1
     display1.configure(image=imgtk)
     

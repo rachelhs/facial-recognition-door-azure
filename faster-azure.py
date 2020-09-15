@@ -73,7 +73,9 @@ def GenerateText(size, fontsize, bg, fg, text):
 	canvas = Image.new('RGB', size, bg)
 	draw = ImageDraw.Draw(canvas)
 	#monospace = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSansBoldOblique.ttf", fontsize)
-	grotesk = ImageFont("fonts/PxGrotesk-Screen.otf", fontsize)
+	#grotesk = ImageFont("fonts/PxGrotesk-Screen.otf", fontsize)
+	grotesk = ImageFont.truetype("fonts/PxGrotesk-Screen.otf", fontsize)
+
 	draw.text((10, 10), text, fg, font=grotesk)
 	#change to BGR for opencv
 	return cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)

@@ -176,12 +176,12 @@ while(True):
 
 	top_left = (0, 0)
 	bottom_right = (360, 360)
-	color=(0, 0, 0)
-	draw_frame = rounded_rectangle(draw_frame, top_left, bottom_right, color=color, radius=0.5, thickness=10)
+	color=(255, 255, 255)
+	draw_frame1 = rounded_rectangle(draw_frame, top_left, bottom_right, color=color, radius=0.25, thickness=60)
+	draw_frame2 = rounded_rectangle(draw_frame, top_left, bottom_right, color=(0, 0, 0), radius=0.25,thickness=1)  
 
+	background[95: 455, 410: 770] = draw_frame1
 
-	background[95: 455, 410: 770] = draw_frame
-	
 	#display live cam feed to screen, quit if q pressed
 	cv2.imshow('Target', background)
 	#(height, width, channels) = background.shape

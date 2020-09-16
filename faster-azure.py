@@ -31,7 +31,16 @@ fontsize = 20
 #draw background for display (mode, (w, h), colour)
 canvas = Image.new('RGB', (800, 600), (255, 255, 255))
 #background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
-background = cv2.imread('experiment.png')
+#choose background according to current gender
+def set_background(gender):
+	if (gender == 'female'):
+		background = cv2.imread('female-w-stretched.png')
+	else if (gender == 'genderless'):
+		background = cv2.imread('genderless-w-stretched.png')
+	else:
+		background = cv2.imread('male-w-stretched.png') 
+
+set_background(gender)
 
 #initialise board pin 11 to trigger magnets and 10 for doorbell
 GPIO.setmode(GPIO.BOARD)

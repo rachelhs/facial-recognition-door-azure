@@ -115,7 +115,7 @@ def display_yes_no():
 		cv2.rectangle(background, (0, 290), (100, 390), (0, 255, 0), -1)
 
 #open curved mask for webcam
-cam_mask = cv2.imread('frame-for-webcam.png')
+cam_mask = cv2.imread('frame-for-webcam.png', cv2.IMREAD_UNCHANGED)
 
 #display initial taget age and gender and image
 display_target_cat()
@@ -147,6 +147,8 @@ while(True):
 	background[95: 455, 410: 770] = draw_frame
 	#draw mask over the top
 	background[90: 460, 405: 775] = cam_mask
+	background[0: 370, 0: 370] = cam_mask
+
 
 	#display live cam feed to screen, quit if q pressed
 	cv2.imshow('Target', background)

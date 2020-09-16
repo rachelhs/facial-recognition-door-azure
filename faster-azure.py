@@ -33,9 +33,10 @@ canvas = Image.new('RGB', (800, 600), (255, 255, 255))
 #background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 #choose background according to current gender
 #background = cv2.imread('female-w-stretched.png') 
-
+#background = None
 
 def set_background(gender):
+	global background
 	if (gender == 'female'):
 		background = cv2.imread('female-w-stretched.png')
 		print('fem')

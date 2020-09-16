@@ -155,10 +155,10 @@ while(True):
 	timestamp = round(time.time()*10)
 	#draw it on the screen
 	#[(y0, yn), (x0, xn)]
-	draw_frame = cv2.resize(frame, (300, 300))
+	draw_frame = cv2.resize(frame, (300, 240))
 
 	#draw current frame on this part of background
-	background[194: 494, 588: 888] = draw_frame
+	background[194: 494, 470: 710] = draw_frame
 
 	#display live cam feed to screen, quit if q pressed
 	cv2.imshow('Target', background)

@@ -40,7 +40,7 @@ def set_background(gender):
 		background = cv2.imread('genderless-w-stretched.png')
 		print('gen')
 	else:
-		background = cv2.imread('male-w-stretched.png')
+		background = cv2.imread('new-m-w.png')
 		print('mal')
 
 # call function immediately

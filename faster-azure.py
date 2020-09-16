@@ -132,7 +132,7 @@ cam_mask = cv2.imread('frame-for-webcam.png')
 
 #display initial taget age and gender and image
 # generate Latest Attempt: text
-latest_attempt_text = GenerateText((160, 31), fontsize, 'white', 'black', Latest Attempt:)
+latest_attempt_text = GenerateText((160, 31), fontsize, 'white', 'black', 'Latest Attempt:')
 # display latest attempt text
 background[178: (178+31) ,125: (125+160)] = latest_attempt_text
 display_target_cat()

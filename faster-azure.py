@@ -113,11 +113,11 @@ def display_last_image():
 	latest_image_stream, latest_image_string = latest_file()
 	latest_image = cv2.imread(latest_image_string)
 
-	last_photo_width = 130
-	last_photo_height = 130
+	last_photo_width = 240
+	last_photo_height = 300
 
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
-	background[0:last_photo_width, 0:last_photo_height] = last_img
+	background[194:last_photo_height, 85:last_photo_width] = last_img
 	return latest_image_stream
 
 #display yes / no box

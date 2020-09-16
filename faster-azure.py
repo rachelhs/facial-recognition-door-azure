@@ -26,7 +26,7 @@ gender = "male"
 detected_age = 0
 detected_gender = "none"
 enter = False
-fontsize = 20
+fontsize = 25
 
 #draw background for display (mode, (w, h), colour)
 canvas = Image.new('RGB', (800, 600), (255, 255, 255))

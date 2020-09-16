@@ -117,7 +117,7 @@ def display_last_image():
 	last_photo_height = 300
 
 	last_img = cv2.resize(latest_image, (last_photo_height, last_photo_width))
-	background[194:last_photo_height, 85:last_photo_width] = last_img
+	background[194:(194+last_photo_height), 85: (85+last_photo_width)] = last_img
 	return latest_image_stream
 
 #display yes / no box

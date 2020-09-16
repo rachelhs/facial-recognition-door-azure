@@ -30,7 +30,8 @@ fontsize = 20
 
 #draw background for display (mode, (w, h), colour)
 canvas = Image.new('RGB', (800, 600), (255, 255, 255))
-background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
+#background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
+background = imread('female-background-w.png')
 
 #initialise board pin 11 to trigger magnets and 10 for doorbell
 GPIO.setmode(GPIO.BOARD)
@@ -73,8 +74,6 @@ def GenerateText(size, fontsize, bg, fg, text):
 	#generate a piece of canvas and draw text on it
 	canvas = Image.new('RGB', size, bg)
 	draw = ImageDraw.Draw(canvas)
-	#monospace = ImageFont.truetype("/usr/share/fonts/truetype/freefont/FreeSansBoldOblique.ttf", fontsize)
-	#grotesk = ImageFont("fonts/PxGrotesk-Screen.otf", fontsize)
 	grotesk = ImageFont.truetype("fonts/PxGrotesk-Screen.otf", fontsize)
 
 	draw.text((10, 10), text, fg, font=grotesk)
@@ -145,10 +144,6 @@ while(True):
 
 	#draw current frame on this part of background
 	background[95: 455, 410: 770] = draw_frame
-	#draw mask over the top
-	#background[90: 460, 405: 775] = cam_mask
-	background[0: 370, 0: 370] = cam_mask
-
 
 	#display live cam feed to screen, quit if q pressed
 	cv2.imshow('Target', background)

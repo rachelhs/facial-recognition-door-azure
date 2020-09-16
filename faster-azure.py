@@ -32,7 +32,7 @@ fontsize = 20
 canvas = Image.new('RGB', (800, 600), (255, 255, 255))
 #background = cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 #choose background according to current gender
-background = cv2.imread('female-w-stretched.png') 
+#background = cv2.imread('female-w-stretched.png') 
 
 
 def set_background(gender):
@@ -131,10 +131,11 @@ def display_yes_no():
 cam_mask = cv2.imread('frame-for-webcam.png')
 
 #display initial taget age and gender and image
+set_background(gender)
+
 display_target_cat()
 display_last_image()
 display_yes_no()
-set_background(gender)
 
 while(True):
 	#for testing generate random personas automatically

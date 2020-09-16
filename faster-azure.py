@@ -138,7 +138,7 @@ background[148: (148+35) ,120: (120+180)] = latest_attempt_text
 # generate Live Webcamt: text
 live_webcam_text = GenerateText((180, 35), fontsize, 'white', 'black', 'Live Webcam:')
 # display live webcam text
-background[148: (148+35) ,500: (500+180)] = latest_attempt_text
+background[148: (148+35) ,500: (500+180)] = live_webcam_text
 display_target_cat()
 display_last_image()
 display_yes_no()

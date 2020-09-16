@@ -139,6 +139,10 @@ background[148: (148+35) ,120: (120+180)] = latest_attempt_text
 live_webcam_text = GenerateText((180, 35), fontsize, 'white', 'black', 'Live Webcam:')
 # display live webcam text
 background[148: (148+35) ,505: (505+180)] = live_webcam_text
+# generate Age: text
+age_text = GenerateText((70, 35), fontsize, 'white', 'black', 'Live Webcam:')
+# display age text
+background[44: (44+35) ,630: (630+70)] = age_text
 display_target_cat()
 display_last_image()
 display_yes_no()

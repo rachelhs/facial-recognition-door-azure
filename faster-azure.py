@@ -116,6 +116,8 @@ def display_yes_no():
 
 #open curved mask for webcam
 cam_mask = cv2.imread('frame-for-webcam.png', cv2.IMREAD_UNCHANGED)
+(b, g, r)=cv2.split(cam_mask)
+cam_mask=cv2.merge([r,g,b])
 
 #display initial taget age and gender and image
 display_target_cat()

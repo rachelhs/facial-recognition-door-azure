@@ -134,7 +134,7 @@ cam_mask = cv2.imread('frame-for-webcam.png')
 # generate Latest Attempt: text
 latest_attempt_text = GenerateText((160, 35), fontsize, 'white', 'black', 'Latest Attempt:')
 # display latest attempt text
-background[148: (148+35) ,125: (125+160)] = latest_attempt_text
+background[148: (148+35) ,120: (120+160)] = latest_attempt_text
 display_target_cat()
 display_last_image()
 display_yes_no()

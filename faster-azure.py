@@ -22,7 +22,7 @@ ENDPOINT = os.environ['FACE_ENDPOINT']
 
 #set initial age and gender states
 age = 26
-gender = "female"
+gender = "male"
 detected_age = 0
 detected_gender = "none"
 enter = False
@@ -35,7 +35,7 @@ canvas = Image.new('RGB', (800, 600), (255, 255, 255))
 def set_background(gender):
 	if (gender == 'female'):
 		background = cv2.imread('female-w-stretched.png')
-	else if (gender == 'genderless'):
+	elif (gender == 'genderless'):
 		background = cv2.imread('genderless-w-stretched.png')
 	else:
 		background = cv2.imread('male-w-stretched.png') 

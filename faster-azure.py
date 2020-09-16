@@ -38,10 +38,13 @@ background = cv2.imread('female-w-stretched.png')
 def set_background(gender):
 	if (gender == 'female'):
 		background = cv2.imread('female-w-stretched.png')
+		print('fem')
 	elif (gender == 'genderless'):
 		background = cv2.imread('genderless-w-stretched.png')
+		print('gen')
 	else:
-		background = cv2.imread('male-w-stretched.png') 
+		background = cv2.imread('male-w-stretched.png')
+		print('mal')
 
 
 #initialise board pin 11 to trigger magnets and 10 for doorbell

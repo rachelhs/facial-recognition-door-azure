@@ -155,7 +155,7 @@ while(True):
 	timestamp = round(time.time()*10)
 	#draw it on the screen
 	#[(y0, yn), (x0, xn)]
-	draw_frame = cv2.resize(frame, (300, 240))
+	draw_frame = cv2.resize(frame, (240, 300))
 
 	#draw current frame on this part of background
 	background[194: 494, 470: 710] = draw_frame

@@ -46,6 +46,8 @@ def set_background(gender):
 		background = cv2.imread('male-w-stretched.png')
 		print('mal')
 
+set_background(gender)
+
 
 #initialise board pin 11 to trigger magnets and 10 for doorbell
 GPIO.setmode(GPIO.BOARD)
@@ -131,7 +133,6 @@ def display_yes_no():
 cam_mask = cv2.imread('frame-for-webcam.png')
 
 #display initial taget age and gender and image
-set_background(gender)
 
 display_target_cat()
 display_last_image()

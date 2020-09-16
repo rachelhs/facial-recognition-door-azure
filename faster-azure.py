@@ -34,10 +34,10 @@ canvas = Image.new('RGB', (800, 600), (255, 255, 255))
 def set_background(gender):
 	global background
 	if (gender == 'female'):
-		background = cv2.imread('female-w-stretched.png')
+		background = cv2.imread('new-f-w.png')
 		print('fem')
 	elif (gender == 'genderless'):
-		background = cv2.imread('genderless-w-stretched.png')
+		background = cv2.imread('new-g-w.png')
 		print('gen')
 	else:
 		background = cv2.imread('new-m-w.png')
@@ -89,8 +89,8 @@ def GenerateText(size, fontsize, bg, fg, text):
 	canvas = Image.new('RGB', size, bg)
 	draw = ImageDraw.Draw(canvas)
 	grotesk = ImageFont.truetype("fonts/PxGrotesk-Screen.otf", fontsize)
-
-	draw.text((10, 10), text, fg, font=grotesk)
+	#first parameter is top left corner of text
+	draw.text((0, 0), text, fg, font=grotesk)
 	#change to BGR for opencv
 	return cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
@@ -131,7 +131,10 @@ def display_yes_no():
 cam_mask = cv2.imread('frame-for-webcam.png')
 
 #display initial taget age and gender and image
-
+# generate Latest Attempt: text
+latest_attempt_text = GenerateText((160, 31), fontsize, 'white', 'black', Latest Attempt:)
+# display latest attempt text
+background[178: (178+31) ,125: (125+160)] = latest_attempt_text
 display_target_cat()
 display_last_image()
 display_yes_no()

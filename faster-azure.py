@@ -126,17 +126,15 @@ def random_persona():
 
 #display target age and target gender
 def display_target_cat():
-	target_gender_text = GenerateText((143, 25), fontsize, 'red', 'white', f"Target Gender: {gender}")
-	background[420:(420+25), 124:(124+143)] = target_gender_text
 	target_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{age}")
 	background[51: (51+35) ,720: (720+60)] = target_age_text
 
 #display age and gender from last photo categorisation
 def display_last_cat():
-	last_gender_text = GenerateText((200, 40), fontsize, 'white', 'black', f"{detected_gender}")
-	background[130:170, 0:200] = last_gender_text
+	last_gender_text = GenerateText((143, 25), fontsize, 'white', 'black', f"{detected_gender}")
+	background[420:(420+25), 124:(124+143)] = last_gender_text
 	last_age_text = GenerateText((100, 40), fontsize, 'yellow', 'black', f"Gender: {detected_age}")
-	background[170:210, 0:100] = last_age_text
+	#background[170:210, 0:100] = last_age_text
 
 #display last photo
 def display_last_image():
@@ -153,9 +151,12 @@ def display_last_image():
 #display yes / no box
 def display_yes_no():
 	if (enter == False):
-		cv2.rectangle(background, (0, 290), (100, 390), (0, 0, 255), -1)
+		#cv2.rectangle(background, (0, 290), (100, 390), (0, 0, 255), -1)
+		print('no')
 	else:
-		cv2.rectangle(background, (0, 290), (100, 390), (0, 255, 0), -1)
+		#cv2.rectangle(background, (0, 290), (100, 390), (0, 255, 0), -1)
+		print('yes')
+
 
 #open curved mask for webcam
 cam_mask = cv2.imread('frame-for-webcam.png')

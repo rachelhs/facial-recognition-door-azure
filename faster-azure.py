@@ -50,8 +50,14 @@ def set_background(gender):
 
 		# write female, genderless, male with female in black, others in grey
 		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#000", 'FEMALE')
+		GENDERLESS_text = GenerateText((143, 25), fontsize, 'white', "#c8c8c8", 'GENDERLESS')
+		MALE_text = GenerateText((75, 25), fontsize, 'white', "#c8c8c8", 'MALE')
+
 		# display text
 		background[47: (47+25) ,150: (150+95)] = FEMALE_text
+		background[47: (47+25) ,295: (295+143)] = GENDERLESS_text
+		background[47: (47+25) ,500: (500+75)] = MALE_text	
+
 	elif (gender == 'genderless'):
 		background = cv2.imread('new-g-w.png')
 
@@ -66,8 +72,12 @@ def set_background(gender):
 
 		# write female, genderless, male with male in black, others in grey
 		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#c8c8c8", 'FEMALE')
+		GENDERLESS_text = GenerateText((143, 25), fontsize, 'white', "#c8c8c8", 'GENDERLESS')
+
 		# display text
 		background[47: (47+25) ,150: (150+95)] = FEMALE_text
+		background[47: (47+25) ,295: (295+143)] = GENDERLESS_text
+
 
 # call function immediately
 set_background(gender)

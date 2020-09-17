@@ -135,7 +135,7 @@ def display_last_cat():
 	background[520:(520+25), 100:(100+143)] = last_gender_text
 	detected_int_age = int(detected_age)
 	last_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{detected_int_age}")
-	background[520:(520+35), 295:(295+60)] = last_age_text
+	background[520:(520+35), 290:(290+60)] = last_age_text
 
 #display last photo
 def display_last_image(latest_image_string):
@@ -217,6 +217,7 @@ while(True):
 	if(timestamp%(frequency*10) == 0):
 		save_image(timestamp, just_capture)
 		latest_image_stream, latest_image_string = latest_file()
+		display_last_image(latest_image_string)
 
 		# Detect a face in an image that contains a single face
 		detected_faces = face_client.face.detect_with_stream(latest_image_stream, return_face_attributes=['age', 'gender'])

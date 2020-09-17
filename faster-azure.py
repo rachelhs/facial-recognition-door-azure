@@ -126,14 +126,14 @@ def random_persona():
 
 #display target age and target gender
 def display_target_cat():
-	target_gender_text = GenerateText((200, 40), fontsize, 'red', 'white', f"Target Gender: {gender}")
-	background[210:250, 0:200] = target_gender_text
+	target_gender_text = GenerateText((143, 25), fontsize, 'red', 'white', f"Target Gender: {gender}")
+	background[420:(420+25), 124:(124+143)] = target_gender_text
 	target_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{age}")
 	background[51: (51+35) ,720: (720+60)] = target_age_text
 
 #display age and gender from last photo categorisation
 def display_last_cat():
-	last_gender_text = GenerateText((200, 40), fontsize, 'cyan', 'magenta', f"Gender: {detected_gender}")
+	last_gender_text = GenerateText((200, 40), fontsize, 'white', 'black', f"{detected_gender}")
 	background[130:170, 0:200] = last_gender_text
 	last_age_text = GenerateText((100, 40), fontsize, 'yellow', 'black', f"Gender: {detected_age}")
 	background[170:210, 0:100] = last_age_text

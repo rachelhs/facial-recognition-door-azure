@@ -44,7 +44,7 @@ def GenerateText(size, fontsize, bg, fg, text):
 
 def set_background(gender):
 	global background
-	height_text = 50
+	height_text = 53
 	if (gender == 'female'):
 		# set white background with black lines and female highlighted
 		background = cv2.imread('new-f-w.png')
@@ -56,7 +56,7 @@ def set_background(gender):
 
 		# display text
 		background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
-		background[height_text: (height_text+25) ,295: (295+143)] = GENDERLESS_text
+		background[height_text: (height_text+25) ,297: (297+143)] = GENDERLESS_text
 		background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
 
 	elif (gender == 'genderless'):
@@ -68,7 +68,7 @@ def set_background(gender):
 		MALE_text = GenerateText((75, 25), fontsize, 'white', "#c8c8c8", 'MALE')
 
 		# display text
-		background[height_text: (height_text+25) ,295: (295+143)] = GENDERLESS_text
+		background[height_text: (height_text+25) ,297: (297+143)] = GENDERLESS_text
 		background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
 		background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
 
@@ -82,7 +82,7 @@ def set_background(gender):
 
 		# display text
 		background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
-		background[height_text: (height_text+25) ,295: (295+143)] = GENDERLESS_text
+		background[height_text: (height_text+25) ,297: (297+143)] = GENDERLESS_text
 		background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
 
 # call function immediately

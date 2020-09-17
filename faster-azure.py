@@ -200,11 +200,14 @@ while(True):
 	frame = cv2.flip(frame, 1)
 	# make it black and white
 	frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+	frame = cv2.cvtColor(frame,cv2.COLOR_GRAY2RGB)
+
 	just_capture = frame.copy()	
 	timestamp = round(time.time()*10)
 	#draw it on the screen
 	#[(y0, yn), (x0, xn)]
-	draw_frame = cv2.resize(frame, (240, 300, 3))
+	draw_frame = cv2.resize(frame, (240, 300))
 
 	#draw current frame on this part of background
 	background[194: 494, 470: 710] = draw_frame

@@ -59,7 +59,7 @@ def set_background(gender):
 		GENDERLESS_text = GenerateText((135, 25), fontsize, 'white', "#000", 'GENDERLESS')
 		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#c8c8c8", 'FEMALE')
 		# display text
-		background[47: (47+25) ,295: (295+95)] = GENDERLESS_text
+		background[47: (47+25) ,295: (295+135)] = GENDERLESS_text
 		background[47: (47+25) ,150: (150+95)] = FEMALE_text
 	else:
 		background = cv2.imread('new-m-w.png')

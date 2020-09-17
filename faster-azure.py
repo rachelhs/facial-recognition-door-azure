@@ -135,7 +135,7 @@ def display_last_cat():
 	background[520:(520+25), 100:(100+143)] = last_gender_text
 	detected_int_age = int(detected_age)
 	last_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{detected_int_age}")
-	background[520:(520+35), 285:(285+60)] = last_age_text
+	background[520:(520+35), 288:(288+60)] = last_age_text
 
 #display last photo
 def display_last_image(latest_image_string):
@@ -195,8 +195,11 @@ while(True):
 
 	#read cam frame by frame
 	ret, frame = cap.read()
+
 	#turn it up the right way
 	frame = cv2.flip(frame, 1)
+	# make it black and white
+	frame = cv2.cvtColor(frame, COLOR_BGR2GRAY)
 	just_capture = frame.copy()	
 	timestamp = round(time.time()*10)
 	#draw it on the screen

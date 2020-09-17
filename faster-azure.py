@@ -48,9 +48,9 @@ def set_background(gender):
 		# set white background with black lines and female highlighted
 		background = cv2.imread('new-f-w.png')
 		# write female, genderless, male with female in black, others in grey
-		FEMALE_text = GenerateText((95, 35), fontsize, 'white', "#000", 'FEMALE')
+		FEMALE_text = GenerateText((95, 32), fontsize, 'white', "#000", 'FEMALE')
 		# display text
-		background[45: (45+35) ,140: (140+95)] = FEMALE_text
+		background[45: (45+32) ,145: (145+95)] = FEMALE_text
 	elif (gender == 'genderless'):
 		background = cv2.imread('new-g-w.png')
 		print('gen')

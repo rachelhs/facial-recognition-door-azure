@@ -172,11 +172,11 @@ background[148: (148+35) ,505: (505+180)] = live_webcam_text
 # generate Age: text
 age_text = GenerateText((60, 35), fontsize, 'white', 'black', 'Age:')
 # display age text
-background[55: (55+35) ,630: (630+60)] = age_text
+background[52: (52+35) ,630: (630+60)] = age_text
 # generate Age: text
-entry_for_text = GenerateText((60, 35), fontsize, 'white', 'black', 'Entry for:')
+entry_for_text = GenerateText((90, 35), fontsize, 'white', 'black', 'Entry for:')
 # display age text
-background[55: (55+35) ,25: (25+60)] = entry_for_text
+background[52: (52+35) ,25: (25+90)] = entry_for_text
 display_target_cat()
 display_last_image()
 display_yes_no()

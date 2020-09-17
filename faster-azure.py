@@ -174,9 +174,9 @@ age_text = GenerateText((60, 35), fontsize, 'white', 'black', 'Age:')
 # display age text
 background[51: (51+35) ,630: (630+60)] = age_text
 # generate Age: text
-entry_for_text = GenerateText((110, 35), fontsize, 'white', 'black', 'Enter if:')
+entry_for_text = GenerateText((95, 35), fontsize, 'white', 'black', 'Entry:')
 # display age text
-background[51: (51+35) ,25: (25+110)] = entry_for_text
+background[51: (51+35) ,25: (25+95)] = entry_for_text
 display_target_cat()
 display_last_image()
 display_yes_no()

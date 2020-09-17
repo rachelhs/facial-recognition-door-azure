@@ -134,7 +134,7 @@ def display_last_cat():
 	last_gender_text = GenerateText((143, 25), fontsize, 'white', 'black', f"{detected_gender}")
 	background[520:(520+25), 100:(100+143)] = last_gender_text
 	last_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{detected_age}")
-	background[520:(520+35), 270:(270+60)] = last_age_text
+	background[520:(520+35), 350:(350+60)] = last_age_text
 
 #display last photo
 def display_last_image(latest_image_string):

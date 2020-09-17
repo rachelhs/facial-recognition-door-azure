@@ -64,20 +64,25 @@ def set_background(gender):
 		# write female, genderless, male with genderless in black, others in grey
 		GENDERLESS_text = GenerateText((143, 25), fontsize, 'white', "#000", 'GENDERLESS')
 		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#c8c8c8", 'FEMALE')
+		MALE_text = GenerateText((75, 25), fontsize, 'white', "#c8c8c8", 'MALE')
+
 		# display text
 		background[47: (47+25) ,295: (295+143)] = GENDERLESS_text
 		background[47: (47+25) ,150: (150+95)] = FEMALE_text
+		background[47: (47+25) ,510: (510+75)] = MALE_text	
+
 	else:
 		background = cv2.imread('new-m-w.png')
 
 		# write female, genderless, male with male in black, others in grey
+		MALE_text = GenerateText((75, 25), fontsize, 'white', "#000", 'MALE')
 		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#c8c8c8", 'FEMALE')
 		GENDERLESS_text = GenerateText((143, 25), fontsize, 'white', "#c8c8c8", 'GENDERLESS')
 
 		# display text
 		background[47: (47+25) ,150: (150+95)] = FEMALE_text
 		background[47: (47+25) ,295: (295+143)] = GENDERLESS_text
-
+		background[47: (47+25) ,510: (510+75)] = MALE_text	
 
 # call function immediately
 set_background(gender)
@@ -168,6 +173,10 @@ background[148: (148+35) ,505: (505+180)] = live_webcam_text
 age_text = GenerateText((60, 35), fontsize, 'white', 'black', 'Age:')
 # display age text
 background[55: (55+35) ,630: (630+60)] = age_text
+# generate Age: text
+entry_for_text = GenerateText((60, 35), fontsize, 'white', 'black', 'Entry for:')
+# display age text
+background[55: (55+35) ,25: (25+60)] = entry_for_text
 display_target_cat()
 display_last_image()
 display_yes_no()

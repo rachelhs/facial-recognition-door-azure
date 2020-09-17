@@ -199,7 +199,7 @@ while(True):
 	#turn it up the right way
 	frame = cv2.flip(frame, 1)
 	# make it black and white
-	frame = cv2.cvtColor(frame, COLOR_BGR2GRAY)
+	frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 	just_capture = frame.copy()	
 	timestamp = round(time.time()*10)
 	#draw it on the screen

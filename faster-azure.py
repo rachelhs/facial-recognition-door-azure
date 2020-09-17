@@ -31,6 +31,17 @@ fontsize = 23
 #draw background for display (mode, (w, h), colour)
 canvas = Image.new('RGB', (800, 600), (255, 255, 255))
 
+#for writing text to screen
+def GenerateText(size, fontsize, bg, fg, text):
+	#generate a piece of canvas and draw text on it
+	canvas = Image.new('RGB', size, bg)
+	draw = ImageDraw.Draw(canvas)
+	grotesk = ImageFont.truetype("fonts/PxGrotesk-Screen.otf", fontsize)
+	#first parameter is top left corner of text
+	draw.text((0, 0), text, fg, font=grotesk)
+	#change to BGR for opencv
+	return cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
+
 def set_background(gender):
 	global background
 	if (gender == 'female'):
@@ -86,17 +97,6 @@ def random_persona():
 	gender = random.choice(['female', 'male', 'genderless'])
 	age = random.randrange(100)
 	return age, gender
-
-#for writing text to screen
-def GenerateText(size, fontsize, bg, fg, text):
-	#generate a piece of canvas and draw text on it
-	canvas = Image.new('RGB', size, bg)
-	draw = ImageDraw.Draw(canvas)
-	grotesk = ImageFont.truetype("fonts/PxGrotesk-Screen.otf", fontsize)
-	#first parameter is top left corner of text
-	draw.text((0, 0), text, fg, font=grotesk)
-	#change to BGR for opencv
-	return cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
 #display target age and target gender
 def display_target_cat():

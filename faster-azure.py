@@ -44,6 +44,7 @@ def GenerateText(size, fontsize, bg, fg, text):
 
 def set_background(gender):
 	global background
+	height_text = 50
 	if (gender == 'female'):
 		# set white background with black lines and female highlighted
 		background = cv2.imread('new-f-w.png')
@@ -54,9 +55,9 @@ def set_background(gender):
 		MALE_text = GenerateText((75, 25), fontsize, 'white', "#c8c8c8", 'MALE')
 
 		# display text
-		background[47: (47+25) ,150: (150+95)] = FEMALE_text
-		background[47: (47+25) ,295: (295+143)] = GENDERLESS_text
-		background[47: (47+25) ,510: (510+75)] = MALE_text	
+		background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
+		background[height_text: (height_text+25) ,295: (295+143)] = GENDERLESS_text
+		background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
 
 	elif (gender == 'genderless'):
 		background = cv2.imread('new-g-w.png')
@@ -67,9 +68,9 @@ def set_background(gender):
 		MALE_text = GenerateText((75, 25), fontsize, 'white', "#c8c8c8", 'MALE')
 
 		# display text
-		background[47: (47+25) ,295: (295+143)] = GENDERLESS_text
-		background[47: (47+25) ,150: (150+95)] = FEMALE_text
-		background[47: (47+25) ,510: (510+75)] = MALE_text	
+		background[height_text: (height_text+25) ,295: (295+143)] = GENDERLESS_text
+		background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
+		background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
 
 	else:
 		background = cv2.imread('new-m-w.png')
@@ -80,9 +81,9 @@ def set_background(gender):
 		GENDERLESS_text = GenerateText((143, 25), fontsize, 'white', "#c8c8c8", 'GENDERLESS')
 
 		# display text
-		background[47: (47+25) ,150: (150+95)] = FEMALE_text
-		background[47: (47+25) ,295: (295+143)] = GENDERLESS_text
-		background[47: (47+25) ,510: (510+75)] = MALE_text	
+		background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
+		background[height_text: (height_text+25) ,295: (295+143)] = GENDERLESS_text
+		background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
 
 # call function immediately
 set_background(gender)

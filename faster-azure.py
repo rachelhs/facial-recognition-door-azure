@@ -21,8 +21,8 @@ KEY = os.environ['FACE_SUBSCRIPTION_KEY']
 ENDPOINT = os.environ['FACE_ENDPOINT']
 
 #set initial age and gender states
-age = 26
-gender = "female"
+age = 47
+gender = "male"
 detected_age = 0
 detected_gender = "none"
 enter = False
@@ -128,8 +128,8 @@ def random_persona():
 def display_target_cat():
 	target_gender_text = GenerateText((200, 40), fontsize, 'red', 'white', f"Target Gender: {gender}")
 	background[210:250, 0:200] = target_gender_text
-	target_age_text = GenerateText((100, 40), fontsize, 'white', 'orange', f"Target Age: {age}")
-	background[250:290, 0:100] = target_age_text
+	target_age_text = GenerateText((60, 35), fontsize, 'white', 'orange', f"Target Age: {age}")
+	background[51: (51+35) ,660: (660+60)] = target_age_text
 
 #display age and gender from last photo categorisation
 def display_last_cat():
@@ -176,7 +176,7 @@ background[51: (51+35) ,630: (630+60)] = age_text
 # generate Age: text
 entry_for_text = GenerateText((95, 35), fontsize, 'white', 'black', 'Entry:')
 # display age text
-background[51: (51+35) ,33: (33+95)] = entry_for_text
+background[51: (51+35) ,38: (38+95)] = entry_for_text
 display_target_cat()
 display_last_image()
 display_yes_no()

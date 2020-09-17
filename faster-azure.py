@@ -129,7 +129,7 @@ def display_target_cat():
 	target_gender_text = GenerateText((200, 40), fontsize, 'red', 'white', f"Target Gender: {gender}")
 	background[210:250, 0:200] = target_gender_text
 	target_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{age}")
-	background[51: (51+35) ,700: (700+60)] = target_age_text
+	background[51: (51+35) ,720: (720+60)] = target_age_text
 
 #display age and gender from last photo categorisation
 def display_last_cat():

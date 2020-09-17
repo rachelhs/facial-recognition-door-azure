@@ -176,7 +176,7 @@ background[51: (51+35) ,630: (630+60)] = age_text
 # generate Age: text
 entry_for_text = GenerateText((95, 35), fontsize, 'white', 'black', 'Entry:')
 # display age text
-background[51: (51+35) ,28: (28+95)] = entry_for_text
+background[51: (51+35) ,33: (33+95)] = entry_for_text
 display_target_cat()
 display_last_image()
 display_yes_no()

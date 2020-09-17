@@ -22,7 +22,7 @@ ENDPOINT = os.environ['FACE_ENDPOINT']
 
 #set initial age and gender states
 age = 26
-gender = "genderless"
+gender = "female"
 detected_age = 0
 detected_gender = "none"
 enter = False

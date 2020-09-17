@@ -137,8 +137,7 @@ def display_last_cat():
 	#background[170:210, 0:100] = last_age_text
 
 #display last photo
-def display_last_image():
-	latest_image_stream, latest_image_string = latest_file()
+def display_last_image(latest_image_string):
 	latest_image = cv2.imread(latest_image_string)
 
 	last_photo_width = 240
@@ -227,14 +226,14 @@ while(True):
 			if (detected_age == age and detected_gender == gender):
 				enter = True
 				display_last_cat()
-				display_last_image()
+				display_last_image(latest_image_string)
 				display_yes_no()
 				GPIO.output(37, GPIO.LOW)
 				time.sleep(3)
 		else:
 			enter = False
 			display_last_cat()
-			display_last_image()
+			display_last_image(latest_image_string)
 			display_yes_no()
 			pass
 

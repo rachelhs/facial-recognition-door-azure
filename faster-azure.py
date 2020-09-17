@@ -22,7 +22,7 @@ ENDPOINT = os.environ['FACE_ENDPOINT']
 
 #set initial age and gender states
 age = 26
-gender = "male"
+gender = "female"
 detected_age = 0
 detected_gender = "none"
 enter = False
@@ -34,8 +34,12 @@ canvas = Image.new('RGB', (800, 600), (255, 255, 255))
 def set_background(gender):
 	global background
 	if (gender == 'female'):
+		# set white background with black lines and female highlighted
 		background = cv2.imread('new-f-w.png')
-		print('fem')
+		# write female, genderless, male with female in black, others in grey
+		FEMALE_text = GenerateText((85, 35), fontsize, 'white', fill="#000", 'FEMALE')
+		# display text
+		background[55: (55+35) ,130: (130+85)] = FEMALE_text
 	elif (gender == 'genderless'):
 		background = cv2.imread('new-g-w.png')
 		print('gen')

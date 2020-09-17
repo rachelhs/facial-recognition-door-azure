@@ -133,8 +133,8 @@ def display_target_cat():
 def display_last_cat():
 	last_gender_text = GenerateText((143, 25), fontsize, 'white', 'black', f"{detected_gender}")
 	background[520:(520+25), 100:(100+143)] = last_gender_text
-	last_age_text = GenerateText((100, 40), fontsize, 'yellow', 'black', f"Gender: {detected_age}")
-	#background[170:210, 0:100] = last_age_text
+	last_age_text = GenerateText((60, 35), fontsize, 'yellow', 'black', f"{detected_age}")
+	background[520:(520+25), 200:(200+60)] = last_age_text
 
 #display last photo
 def display_last_image(latest_image_string):
@@ -212,7 +212,7 @@ while(True):
 		break
 
     #how often to take a picture and analyse
-	frequency = 5
+	frequency = 8
 	if(timestamp%(frequency*10) == 0):
 		save_image(timestamp, just_capture)
 		latest_image_stream, latest_image_string = latest_file()
@@ -229,7 +229,7 @@ while(True):
 				display_last_image(latest_image_string)
 				display_yes_no()
 				GPIO.output(37, GPIO.LOW)
-				time.sleep(3)
+				time.sleep(20)
 		else:
 			enter = False
 			display_last_cat()

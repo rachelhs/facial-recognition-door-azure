@@ -22,7 +22,7 @@ ENDPOINT = os.environ['FACE_ENDPOINT']
 
 #set initial age and gender states
 age = 26
-gender = "female"
+gender = "genderless"
 detected_age = 0
 detected_gender = "none"
 enter = False
@@ -47,16 +47,27 @@ def set_background(gender):
 	if (gender == 'female'):
 		# set white background with black lines and female highlighted
 		background = cv2.imread('new-f-w.png')
+
 		# write female, genderless, male with female in black, others in grey
 		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#000", 'FEMALE')
 		# display text
 		background[47: (47+25) ,150: (150+95)] = FEMALE_text
 	elif (gender == 'genderless'):
 		background = cv2.imread('new-g-w.png')
-		print('gen')
+
+		# write female, genderless, male with genderless in black, others in grey
+		GENDERLESS_text = GenerateText((135, 25), fontsize, 'white', "#000", 'GENDERLESS')
+		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#c8c8c8", 'FEMALE')
+		# display text
+		background[47: (47+25) ,295: (295+95)] = GENDERLESS_text
+		background[47: (47+25) ,150: (150+95)] = FEMALE_text
 	else:
 		background = cv2.imread('new-m-w.png')
-		print('mal')
+
+		# write female, genderless, male with male in black, others in grey
+		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#c8c8c8", 'FEMALE')
+		# display text
+		background[47: (47+25) ,150: (150+95)] = FEMALE_text
 
 # call function immediately
 set_background(gender)

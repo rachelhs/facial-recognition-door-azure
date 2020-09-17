@@ -216,7 +216,8 @@ while(True):
 	frequency = 5
 	if(timestamp%(frequency*10) == 0):
 		save_image(timestamp, just_capture)
-		latest_image_stream = display_last_image()
+		latest_image_stream, latest_image_string = latest_file()
+
 		# Detect a face in an image that contains a single face
 		detected_faces = face_client.face.detect_with_stream(latest_image_stream, return_face_attributes=['age', 'gender'])
 
@@ -226,12 +227,14 @@ while(True):
 			if (detected_age == age and detected_gender == gender):
 				enter = True
 				display_last_cat()
+				display_last_image()
 				display_yes_no()
 				GPIO.output(37, GPIO.LOW)
 				time.sleep(3)
 		else:
 			enter = False
 			display_last_cat()
+			display_last_image()
 			display_yes_no()
 			pass
 

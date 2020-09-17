@@ -56,7 +56,7 @@ def set_background(gender):
 		# display text
 		background[47: (47+25) ,150: (150+95)] = FEMALE_text
 		background[47: (47+25) ,295: (295+143)] = GENDERLESS_text
-		background[47: (47+25) ,500: (500+75)] = MALE_text	
+		background[47: (47+25) ,505: (505+75)] = MALE_text	
 
 	elif (gender == 'genderless'):
 		background = cv2.imread('new-g-w.png')

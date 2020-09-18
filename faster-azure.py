@@ -143,7 +143,8 @@ def access_granted_display(latest_image_string):
 		pass
 
 display_target_cat()
-access_granted_display()
+latest_image_stream, latest_image_string = latest_file()
+access_granted_display(latest_image_string)
 
 while(True):
 	#for testing generate random personas automatically

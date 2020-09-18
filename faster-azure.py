@@ -206,7 +206,7 @@ while(True):
 		if (detected_faces):
 			detected_age = detected_faces[0].face_attributes.age
 			detected_gender = detected_faces[0].face_attributes.gender
-			if (detected_gender == gender && detected_age == age):
+			if (detected_gender == gender and detected_age == age):
 				enter = True
 				GPIO.output(37, GPIO.LOW)
 				access_granted_display(latest_image_string)

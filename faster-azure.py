@@ -25,7 +25,7 @@ age = 30
 gender = "female"
 detected_age = 0
 detected_gender = "none"
-enter = False
+enter = True
 fontsize = 23
 
 #draw background for display (mode, (w, h), colour)

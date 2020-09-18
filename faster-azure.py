@@ -73,7 +73,7 @@ def set_background(gender):
 		background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
 
 	else:
-		background = cv2.imread('new-m-w.png')
+		background = cv2.imread('male-green-stretched.png')
 
 		# write female, genderless, male with male in black, others in grey
 		MALE_text = GenerateText((75, 25), fontsize, 'white', "#000", 'MALE')

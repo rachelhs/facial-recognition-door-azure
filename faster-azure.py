@@ -129,7 +129,7 @@ def access_granted_display(latest_image_string):
 
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
 	access_granted_image = cv2.resize(access_granted_image, (last_photo_width, last_photo_height))
-	layered_img = cv2.addWeighted(last_img,0.4,access_granted_image_alpha,1,0)
+	layered_img = cv2.addWeighted(last_img,1,access_granted_image_alpha,1,0)
 
 	if (enter == True):
 		if (gender == 'female'):

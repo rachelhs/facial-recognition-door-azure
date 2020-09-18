@@ -153,13 +153,7 @@ latest_image_stream, latest_image_string = latest_file()
 access_granted_display(latest_image_string)
 
 while(True):
-	#for testing generate random personas automatically
-	#age, gender = random_persona()
-	if GPIO.input(10) == GPIO.HIGH:
-		print("doorbell pressed")
-		age, gender = random_persona()
-		print(age, gender)
-		display_target_cat()
+
 	#magnets normally on
 	GPIO.output(37, GPIO.HIGH)
 
@@ -202,6 +196,7 @@ while(True):
 
 		# Detect a face in an image that contains a single face
 		detected_faces = face_client.face.detect_with_stream(latest_image_stream, return_face_attributes=['age', 'gender'])
+		print(age, gender)
 
 		if (detected_faces):
 			detected_age = detected_faces[0].face_attributes.age

@@ -31,7 +31,7 @@ fontsize = 23
 #select random persona on start and after accepted
 def random_persona():
 	gender = random.choice(['female', 'male'])
-	age = random.randrange(100)
+	age = random.randint(12, 80)
 	return age, gender
 
 #draw background for display (mode, (w, h), colour)

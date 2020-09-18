@@ -25,7 +25,7 @@ age = 30
 gender = "female"
 detected_age = 0
 detected_gender = "none"
-enter = True
+enter = False
 fontsize = 23
 
 #draw background for display (mode, (w, h), colour)
@@ -209,6 +209,7 @@ while(True):
 			if (detected_gender == gender):
 				enter = True
 				GPIO.output(37, GPIO.LOW)
+				print(enter, gender)
 				access_granted_display(latest_image_string)
 				time.sleep(20)
 				# reset white background after 20 seconds

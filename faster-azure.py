@@ -133,7 +133,7 @@ def access_granted_display(latest_image_string):
 	layered_img = cv2.addWeighted(last_img, 1, green_mask, 1, 0)
 	#layered_img_2 = cv2.addWeighted(layered_img,1,access_granted_image_alpha,1,1)
 	#make a black rectangle - top left, bottom right, col, line thickness
-	cv2.rectangle(layered_img,(76,76),(450,140),(0,0,0),50)
+	cv2.rectangle(layered_img,(76,376),(450,476),(0,0,0),50)
 
 	layered_img_2 = cv2.add(layered_img,access_granted_image_alpha)
 

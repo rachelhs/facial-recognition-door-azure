@@ -148,6 +148,7 @@ def access_granted_display(latest_image_string):
 		pass
 
 display_target_cat()
+age, gender = random_persona()
 #latest_image_stream, latest_image_string = latest_file()
 #access_granted_display(latest_image_string)
 
@@ -211,6 +212,8 @@ while(True):
 				access_granted_display(latest_image_string)
 				time.sleep(20)
 				# reset white background after 20 seconds
+				# choose a new random persona
+				age, gender = random_persona()
 				set_background(gender)
 				display_target_cat()
 				pass

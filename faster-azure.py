@@ -125,6 +125,7 @@ def access_granted_display(latest_image_string):
 	latest_image = cv2.imread(latest_image_string)
 	access_granted_image_alpha = cv2.imread('access-granted-alpha.png')
 	green_mask = cv2.imread('green-mask.png')
+	black_rect = cv2.imread('access-granted-black-shape.png')
 
 	last_photo_width = 750
 	last_photo_height = 450
@@ -133,7 +134,7 @@ def access_granted_display(latest_image_string):
 	layered_img = cv2.addWeighted(last_img, 1, green_mask, 1, 0)
 	#layered_img_2 = cv2.addWeighted(layered_img,1,access_granted_image_alpha,1,1)
 	#make a black rectangle - top left, bottom right, col, line thickness
-	cv2.rectangle(layered_img,(76,306),(450,476),(0,0,0),50)
+	layered_img = cv2.add(layered_img, black_rect)
 
 	layered_img_2 = cv2.add(layered_img,access_granted_image_alpha)
 

@@ -147,8 +147,8 @@ def access_granted_display(latest_image_string):
 	else:
 		pass
 
-display_target_cat()
 age, gender = random_persona()
+display_target_cat()
 #latest_image_stream, latest_image_string = latest_file()
 #access_granted_display(latest_image_string)
 

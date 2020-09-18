@@ -25,7 +25,7 @@ age = 30
 gender = "female"
 detected_age = 0
 detected_gender = "none"
-enter = True
+enter = False
 fontsize = 23
 
 #draw background for display (mode, (w, h), colour)
@@ -148,8 +148,8 @@ def access_granted_display(latest_image_string):
 		pass
 
 display_target_cat()
-latest_image_stream, latest_image_string = latest_file()
-access_granted_display(latest_image_string)
+#latest_image_stream, latest_image_string = latest_file()
+#access_granted_display(latest_image_string)
 
 while(True):
 	#for testing generate random personas automatically

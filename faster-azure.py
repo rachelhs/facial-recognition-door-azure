@@ -132,6 +132,7 @@ def access_granted_display():
 		pass
 
 display_target_cat()
+access_granted_display()
 
 while(True):
 	#for testing generate random personas automatically

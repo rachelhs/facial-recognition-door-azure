@@ -125,14 +125,12 @@ def access_granted_display(latest_image_string):
 	latest_image = cv2.imread(latest_image_string)
 	access_granted_image_alpha = cv2.imread('access-granted-alpha.png')
 	green_mask = cv2.imread('green-mask.png')
-	black_rect = cv2.imread('access-granted-black-shape.png')
 
 	last_photo_width = 750
 	last_photo_height = 450
 
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
-	layered_img = cv2.add(last_img, green_mask)
-	layered_img_2 = cv2.add(layered_img, black_rect)
+	layered_img = cv2.bitwise_and(last_img, green_mask)
 	layered_img_3 = cv2.bitwise_and(layered_img_2,access_granted_image_alpha)
 
 	if (enter == True):

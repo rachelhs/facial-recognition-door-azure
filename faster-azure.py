@@ -120,7 +120,7 @@ def display_last_image(latest_image_string):
 #display yes / no box
 def access_granted_display(latest_image_string):
 	global green_background
-	target_age_text = GenerateText((60, 35), fontsize, 'green', 'black', f"{age}")
+	target_age_text = GenerateText((55, 30), fontsize, 'white', 'black', f"{age}")
 
 	latest_image = cv2.imread(latest_image_string)
 	access_granted_image_alpha = cv2.imread('access-granted-alpha.png')

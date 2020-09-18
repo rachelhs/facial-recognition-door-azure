@@ -81,9 +81,9 @@ def set_background(gender):
 		GENDERLESS_text = GenerateText((143, 25), fontsize, 'white', "#c8c8c8", 'GENDERLESS')
 
 		# display text
-		background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
-		background[height_text: (height_text+25) ,297: (297+143)] = GENDERLESS_text
-		background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
+		#background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
+		#background[height_text: (height_text+25) ,297: (297+143)] = GENDERLESS_text
+		#background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
 
 # call function immediately
 set_background(gender)
@@ -174,7 +174,7 @@ live_webcam_text = GenerateText((180, 35), fontsize, 'white', 'black', 'Live Web
 # generate Age: text
 age_text = GenerateText((60, 35), fontsize, 'white', 'black', 'Age:')
 # display age text
-background[51: (51+35) ,630: (630+60)] = age_text
+#background[51: (51+35) ,630: (630+60)] = age_text
 # generate Age: text
 entry_for_text = GenerateText((95, 35), fontsize, 'white', 'black', 'Entry:')
 # display age text

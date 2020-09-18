@@ -132,7 +132,6 @@ def access_granted_display():
 		pass
 
 display_target_cat()
-display_last_image()
 
 while(True):
 	#for testing generate random personas automatically

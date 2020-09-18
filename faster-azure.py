@@ -137,7 +137,7 @@ def access_granted_display(latest_image_string):
 		if (gender == 'female'):
 			green_background = cv2.imread('female-green-stretched.png')
 			green_background[120:(120+last_photo_height), 25: (25+last_photo_width)] = layered_img_2
-			green_background[51: (51+35) ,720: (720+60)] = target_age_text
+			green_background[51: (51+30) ,720: (720+55)] = target_age_text
 
 		elif (gender == 'genderless'):
 			green_background = cv2.imread('genderless-green-stretched.png')

@@ -21,11 +21,11 @@ KEY = os.environ['FACE_SUBSCRIPTION_KEY']
 ENDPOINT = os.environ['FACE_ENDPOINT']
 
 #set initial age and gender states
-age = 47
-gender = "male"
+age = 30
+gender = "female"
 detected_age = 0
 detected_gender = "none"
-enter = False
+enter = True
 fontsize = 23
 
 #draw background for display (mode, (w, h), colour)
@@ -43,51 +43,19 @@ def GenerateText(size, fontsize, bg, fg, text):
 	return cv2.cvtColor(np.array(canvas), cv2.COLOR_RGB2BGR)
 
 def set_background(gender):
+	# sets white background image with target gender highlighted and static text
 	global background
-	height_text = 53
 	if (gender == 'female'):
-		# set white background with black lines and female highlighted
-		background = cv2.imread('new-f-w.png')
-
-		# write female, genderless, male with female in black, others in grey
-		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#000", 'FEMALE')
-		GENDERLESS_text = GenerateText((143, 25), fontsize, 'white', "#c8c8c8", 'GENDERLESS')
-		MALE_text = GenerateText((75, 25), fontsize, 'white', "#c8c8c8", 'MALE')
-
-		# display text
-		background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
-		background[height_text: (height_text+25) ,297: (297+143)] = GENDERLESS_text
-		background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
+		background = cv2.imread('new-f-w.png')	
 
 	elif (gender == 'genderless'):
 		background = cv2.imread('new-g-w.png')
 
-		# write female, genderless, male with genderless in black, others in grey
-		GENDERLESS_text = GenerateText((143, 25), fontsize, 'white', "#000", 'GENDERLESS')
-		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#c8c8c8", 'FEMALE')
-		MALE_text = GenerateText((75, 25), fontsize, 'white', "#c8c8c8", 'MALE')
-
-		# display text
-		background[height_text: (height_text+25) ,297: (297+143)] = GENDERLESS_text
-		background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
-		background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
-
 	else:
 		background = cv2.imread('new-m-w.png')
 
-		# write female, genderless, male with male in black, others in grey
-		MALE_text = GenerateText((75, 25), fontsize, 'white', "#000", 'MALE')
-		FEMALE_text = GenerateText((95, 25), fontsize, 'white', "#c8c8c8", 'FEMALE')
-		GENDERLESS_text = GenerateText((143, 25), fontsize, 'white', "#c8c8c8", 'GENDERLESS')
-
-		# display text
-		#background[height_text: (height_text+25) ,150: (150+95)] = FEMALE_text
-		#background[height_text: (height_text+25) ,297: (297+143)] = GENDERLESS_text
-		#background[height_text: (height_text+25) ,510: (510+75)] = MALE_text	
-
 # call function immediately
 set_background(gender)
-
 
 #initialise board pin 11 to trigger magnets and 10 for doorbell
 GPIO.setmode(GPIO.BOARD)
@@ -128,15 +96,15 @@ def random_persona():
 #display target age and target gender
 def display_target_cat():
 	target_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{age}")
-	#background[51: (51+35) ,720: (720+60)] = target_age_text
+	background[51: (51+35) ,720: (720+60)] = target_age_text
 
 #display age and gender from last photo categorisation
 def display_last_cat():
 	last_gender_text = GenerateText((143, 25), fontsize, 'white', 'black', f"{detected_gender}")
-	#background[520:(520+25), 100:(100+143)] = last_gender_text
+	background[520:(520+25), 100:(100+143)] = last_gender_text
 	detected_int_age = int(detected_age)
 	last_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{detected_int_age}")
-	#background[520:(520+35), 288:(288+60)] = last_age_text
+	background[520:(520+35), 288:(288+60)] = last_age_text
 
 #display last photo
 def display_last_image(latest_image_string):
@@ -150,38 +118,21 @@ def display_last_image(latest_image_string):
 	return latest_image_stream
 
 #display yes / no box
-def display_yes_no():
-	if (enter == False):
-		#cv2.rectangle(background, (0, 290), (100, 390), (0, 0, 255), -1)
-		print('no')
+def access_granted_display():
+	if (enter == True):
+		if (gender == 'female'):
+			background = cv2.imread('female-green-stretched.png')	
+
+		elif (gender == 'genderless'):
+			background = cv2.imread('genderless-green-stretched.png')
+
+		else:
+			background = cv2.imread('male-green-stretched.png')
 	else:
-		#cv2.rectangle(background, (0, 290), (100, 390), (0, 255, 0), -1)
-		print('yes')
+		pass
 
-
-#open curved mask for webcam
-cam_mask = cv2.imread('frame-for-webcam.png')
-
-#display initial taget age and gender and image
-# generate Latest Attempt: text
-latest_attempt_text = GenerateText((180, 35), fontsize, 'white', 'black', 'Latest Attempt:')
-# display latest attempt text
-#background[148: (148+35) ,120: (120+180)] = latest_attempt_text
-# generate Live Webcamt: text
-live_webcam_text = GenerateText((180, 35), fontsize, 'white', 'black', 'Live Webcam:')
-# display live webcam text
-#background[148: (148+35) ,505: (505+180)] = live_webcam_text
-# generate Age: text
-age_text = GenerateText((60, 35), fontsize, 'white', 'black', 'Age:')
-# display age text
-#background[51: (51+35) ,630: (630+60)] = age_text
-# generate Age: text
-entry_for_text = GenerateText((95, 35), fontsize, 'white', 'black', 'Entry:')
-# display age text
-#background[51: (51+35) ,38: (38+95)] = entry_for_text
 display_target_cat()
-#display_last_image()
-display_yes_no()
+display_last_image()
 
 while(True):
 	#for testing generate random personas automatically
@@ -236,14 +187,15 @@ while(True):
 				enter = True
 				display_last_cat()
 				display_last_image(latest_image_string)
-				display_yes_no()
 				GPIO.output(37, GPIO.LOW)
+				access_granted_display()
 				time.sleep(20)
+				# reset white background after 20 seconds
+				set_background(gender)
 		else:
 			enter = False
 			display_last_cat()
 			display_last_image(latest_image_string)
-			display_yes_no()
 			pass
 
 cap.release()

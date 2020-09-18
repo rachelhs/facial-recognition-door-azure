@@ -148,6 +148,7 @@ def access_granted_display(latest_image_string):
 		pass
 
 age, gender = random_persona()
+print(age, gender)
 display_target_cat()
 latest_image_stream, latest_image_string = latest_file()
 access_granted_display(latest_image_string)
@@ -196,7 +197,6 @@ while(True):
 
 		# Detect a face in an image that contains a single face
 		detected_faces = face_client.face.detect_with_stream(latest_image_stream, return_face_attributes=['age', 'gender'])
-		print(age, gender)
 
 		if (detected_faces):
 			detected_age = detected_faces[0].face_attributes.age

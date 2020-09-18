@@ -128,15 +128,15 @@ def random_persona():
 #display target age and target gender
 def display_target_cat():
 	target_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{age}")
-	background[51: (51+35) ,720: (720+60)] = target_age_text
+	#background[51: (51+35) ,720: (720+60)] = target_age_text
 
 #display age and gender from last photo categorisation
 def display_last_cat():
 	last_gender_text = GenerateText((143, 25), fontsize, 'white', 'black', f"{detected_gender}")
-	background[520:(520+25), 100:(100+143)] = last_gender_text
+	#background[520:(520+25), 100:(100+143)] = last_gender_text
 	detected_int_age = int(detected_age)
 	last_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{detected_int_age}")
-	background[520:(520+35), 288:(288+60)] = last_age_text
+	#background[520:(520+35), 288:(288+60)] = last_age_text
 
 #display last photo
 def display_last_image(latest_image_string):
@@ -166,11 +166,11 @@ cam_mask = cv2.imread('frame-for-webcam.png')
 # generate Latest Attempt: text
 latest_attempt_text = GenerateText((180, 35), fontsize, 'white', 'black', 'Latest Attempt:')
 # display latest attempt text
-background[148: (148+35) ,120: (120+180)] = latest_attempt_text
+#background[148: (148+35) ,120: (120+180)] = latest_attempt_text
 # generate Live Webcamt: text
 live_webcam_text = GenerateText((180, 35), fontsize, 'white', 'black', 'Live Webcam:')
 # display live webcam text
-background[148: (148+35) ,505: (505+180)] = live_webcam_text
+#background[148: (148+35) ,505: (505+180)] = live_webcam_text
 # generate Age: text
 age_text = GenerateText((60, 35), fontsize, 'white', 'black', 'Age:')
 # display age text
@@ -178,7 +178,7 @@ background[51: (51+35) ,630: (630+60)] = age_text
 # generate Age: text
 entry_for_text = GenerateText((95, 35), fontsize, 'white', 'black', 'Entry:')
 # display age text
-background[51: (51+35) ,38: (38+95)] = entry_for_text
+#background[51: (51+35) ,38: (38+95)] = entry_for_text
 display_target_cat()
 #display_last_image()
 display_yes_no()

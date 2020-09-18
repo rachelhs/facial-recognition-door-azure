@@ -119,15 +119,17 @@ def display_last_image(latest_image_string):
 
 #display yes / no box
 def access_granted_display():
+	global green_background
+
 	if (enter == True):
 		if (gender == 'female'):
-			background = cv2.imread('female-green-stretched.png')	
+			green_background = cv2.imread('female-green-stretched.png')	
 
 		elif (gender == 'genderless'):
-			background = cv2.imread('genderless-green-stretched.png')
+			green_background = cv2.imread('genderless-green-stretched.png')
 
 		else:
-			background = cv2.imread('male-green-stretched.png')
+			green_background = cv2.imread('male-green-stretched.png')
 	else:
 		pass
 
@@ -164,11 +166,16 @@ while(True):
 	#draw current frame on this part of background
 	background[194: 494, 470: 710] = draw_frame
 
-	#display live cam feed to screen, quit if q pressed
-	cv2.imshow('Target', background)
-	#(height, width, channels) = background.shape
+	# choose which background to display
+	if (enter == True):
+		cv2.imshow('Target', green_background)
+	else:
+		#display live cam feed to screen, quit if q pressed
+		cv2.imshow('Target', background)
+		#(height, width, channels) = background.shape
+		
 	if cv2.waitKey(1) & 0xFF == ord('q'):
-		break
+	break
 
     #how often to take a picture and analyse
 	frequency = 5

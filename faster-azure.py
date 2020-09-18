@@ -212,6 +212,7 @@ while(True):
 				time.sleep(20)
 				# reset white background after 20 seconds
 				set_background(gender)
+				display_target_cat()
 				pass
 		else:
 			enter = False

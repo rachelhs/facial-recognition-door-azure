@@ -120,7 +120,7 @@ def display_last_image(latest_image_string):
 #display yes / no box
 def access_granted_display(latest_image_string):
 	global green_background
-	target_age_text = GenerateText((55, 30), fontsize, 'white', 'black', f"{age}")
+	target_age_text = GenerateText((35, 20), fontsize, '#0f0', 'black', f"{age}")
 
 	latest_image = cv2.imread(latest_image_string)
 	access_granted_image_alpha = cv2.imread('access-granted-alpha.png')
@@ -131,13 +131,13 @@ def access_granted_display(latest_image_string):
 
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
 	layered_img = cv2.addWeighted(last_img, 1, green_mask, 1, 0)
-	layered_img_2 = cv2.addWeighted(layered_img,1,access_granted_image_alpha,1,0)
+	layered_img_2 = cv2.addWeighted(layered_img,1,access_granted_image_alpha,1,1)
 
 	if (enter == True):
 		if (gender == 'female'):
 			green_background = cv2.imread('female-green-stretched.png')
 			green_background[120:(120+last_photo_height), 25: (25+last_photo_width)] = layered_img_2
-			green_background[51: (51+30) ,720: (720+55)] = target_age_text
+			green_background[51: (51+20) ,720: (720+35)] = target_age_text
 
 		elif (gender == 'genderless'):
 			green_background = cv2.imread('genderless-green-stretched.png')

@@ -208,7 +208,7 @@ while(True):
 			if (detected_age == age and detected_gender == gender):
 				enter = True
 				GPIO.output(37, GPIO.LOW)
-				access_granted_display()
+				access_granted_display(latest_image_string)
 				time.sleep(20)
 				# reset white background after 20 seconds
 				set_background(gender)

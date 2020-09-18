@@ -28,6 +28,12 @@ detected_gender = "none"
 enter = False
 fontsize = 23
 
+#select random persona on start and after accepted
+def random_persona():
+	gender = random.choice(['female', 'male', 'genderless'])
+	age = random.randrange(100)
+	return age, gender
+
 #draw background for display (mode, (w, h), colour)
 canvas = Image.new('RGB', (800, 600), (255, 255, 255))
 
@@ -55,6 +61,8 @@ def set_background(gender):
 		background = cv2.imread('new-m-w.png')
 
 # call function immediately
+age, gender = random_persona()
+print(age, gender)
 set_background(gender)
 
 #initialise board pin 11 to trigger magnets and 10 for doorbell
@@ -85,13 +93,6 @@ def latest_file():
 	latest_file = max(list_of_files, key=os.path.getctime)
 	image_stream = open(latest_file, 'r+b')
 	return image_stream, latest_file
-
-
-#select random persona on doorbell press
-def random_persona():
-	gender = random.choice(['female', 'male', 'genderless'])
-	age = random.randrange(100)
-	return age, gender
 
 #display target age and target gender
 def display_target_cat():
@@ -147,8 +148,6 @@ def access_granted_display(latest_image_string):
 	else:
 		pass
 
-age, gender = random_persona()
-print(age, gender)
 display_target_cat()
 latest_image_stream, latest_image_string = latest_file()
 access_granted_display(latest_image_string)

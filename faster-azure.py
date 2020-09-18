@@ -134,7 +134,6 @@ def access_granted_display(latest_image_string):
 			green_background = cv2.imread('female-green-stretched.png')
 			green_background[134:(134+last_photo_height), 25: (25+last_photo_width)] = layered_img
 
-
 		elif (gender == 'genderless'):
 			green_background = cv2.imread('genderless-green-stretched.png')
 
@@ -144,6 +143,7 @@ def access_granted_display(latest_image_string):
 		pass
 
 display_target_cat()
+access_granted_display()
 
 while(True):
 	#for testing generate random personas automatically

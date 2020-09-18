@@ -122,13 +122,14 @@ def access_granted_display(latest_image_string):
 	global green_background
 	latest_image = cv2.imread(latest_image_string)
 	access_granted_image = cv2.imread('access-granted.png')
+	access_granted_image_alpha = cv2.imread('access-granted-alpha.png')
 
 	last_photo_width = 750
 	last_photo_height = 450
 
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
 	access_granted_image = cv2.resize(access_granted_image, (last_photo_width, last_photo_height))
-	layered_img = cv2.addWeighted(last_img,0.4,access_granted_image,1,0)
+	layered_img = cv2.addWeighted(last_img,0.4,access_granted_image_alpha,1,0)
 
 	if (enter == True):
 		if (gender == 'female'):

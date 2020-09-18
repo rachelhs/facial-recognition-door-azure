@@ -131,12 +131,12 @@ def access_granted_display(latest_image_string):
 
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
 	layered_img = cv2.bitwise_and(last_img, green_mask)
-	layered_img_3 = cv2.bitwise_and(layered_img_2,access_granted_image_alpha)
+	layered_img_2 = cv2.bitwise_and(layered_img,access_granted_image_alpha)
 
 	if (enter == True):
 		if (gender == 'female'):
 			green_background = cv2.imread('female-green-stretched.png')
-			green_background[120:(120+last_photo_height), 25: (25+last_photo_width)] = layered_img_3
+			green_background[120:(120+last_photo_height), 25: (25+last_photo_width)] = layered_img_2
 			green_background[46: (46+20) ,715: (715+35)] = target_age_text
 
 		elif (gender == 'genderless'):

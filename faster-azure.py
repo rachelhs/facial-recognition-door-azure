@@ -149,8 +149,8 @@ def access_granted_display(latest_image_string):
 
 age, gender = random_persona()
 display_target_cat()
-#latest_image_stream, latest_image_string = latest_file()
-#access_granted_display(latest_image_string)
+latest_image_stream, latest_image_string = latest_file()
+access_granted_display(latest_image_string)
 
 while(True):
 	#for testing generate random personas automatically

@@ -118,12 +118,22 @@ def display_last_image(latest_image_string):
 	return latest_image_stream
 
 #display yes / no box
-def access_granted_display():
+def access_granted_display(latest_image_string):
 	global green_background
+	latest_image = cv2.imread(latest_image_string)
+	access_granted_image = cv2.imread('access-granted.png')
+
+	last_photo_width = 750
+	last_photo_height = 450
+
+	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
+	layered_img = cv2.addWeighted(last_img,0.4,access_granted_image,1,0)
 
 	if (enter == True):
 		if (gender == 'female'):
-			green_background = cv2.imread('female-green-stretched.png')	
+			green_background = cv2.imread('female-green-stretched.png')
+			green_background[134:(134+last_photo_height), 25: (25+last_photo_width)] = layered_img
+
 
 		elif (gender == 'genderless'):
 			green_background = cv2.imread('genderless-green-stretched.png')
@@ -134,7 +144,6 @@ def access_granted_display():
 		pass
 
 display_target_cat()
-access_granted_display()
 
 while(True):
 	#for testing generate random personas automatically
@@ -178,7 +187,7 @@ while(True):
 		break
 
     #how often to take a picture and analyse
-	frequency = 5
+	frequency = 10
 	if(timestamp%(frequency*10) == 0):
 		save_image(timestamp, just_capture)
 		latest_image_stream, latest_image_string = latest_file()
@@ -192,8 +201,6 @@ while(True):
 			detected_gender = detected_faces[0].face_attributes.gender
 			if (detected_age == age and detected_gender == gender):
 				enter = True
-				display_last_cat()
-				display_last_image(latest_image_string)
 				GPIO.output(37, GPIO.LOW)
 				access_granted_display()
 				time.sleep(20)

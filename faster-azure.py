@@ -175,7 +175,7 @@ while(True):
 		#(height, width, channels) = background.shape
 		
 	if cv2.waitKey(1) & 0xFF == ord('q'):
-	break
+		break
 
     #how often to take a picture and analyse
 	frequency = 5

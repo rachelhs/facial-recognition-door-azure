@@ -123,7 +123,7 @@ def access_granted_display(latest_image_string):
 	target_age_text = GenerateText((35, 20), fontsize, '#0f0', 'black', f"{age}")
 
 	latest_image = cv2.imread(latest_image_string)
-	access_granted_image_alpha = cv2.imread('access-granted-alpha.png')
+	access_granted_image_alpha = cv2.imread('access-granted-alpha-2.png')
 	green_mask = cv2.imread('green-mask.png')
 
 	last_photo_width = 750

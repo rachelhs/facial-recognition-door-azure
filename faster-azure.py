@@ -132,7 +132,7 @@ def access_granted_display(latest_image_string):
 
 	last_img = cv2.resize(latest_image, (last_photo_width, last_photo_height))
 	layered_img = cv2.add(last_img, green_mask)
-	layered_img_2 = cv2.bitwise_and(layered_img, black_rect)
+	layered_img_2 = cv2.bitwise_not(layered_img, black_rect)
 	layered_img_3 = cv2.add(layered_img,access_granted_image_alpha)
 
 	if (enter == True):

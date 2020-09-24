@@ -155,6 +155,12 @@ access_granted_display(latest_image_string)
 
 while(True):
 
+	if GPIO.input(10) == GPIO.HIGH:
+		print("new persona selected")
+		age, gender = random_persona()
+		print(age, gender)
+		display_target_cat()
+
 	#magnets normally on
 	GPIO.output(37, GPIO.HIGH)
 
@@ -231,7 +237,6 @@ while(True):
 			display_last_image(latest_image_string)
 			display_last_cat()
 			save_image(timestamp, just_capture)
-
 			pass
 
 cap.release()

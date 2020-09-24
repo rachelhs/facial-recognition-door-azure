@@ -219,7 +219,7 @@ while(True):
 				enter = False
 				print('do not enter')
 				display_last_cat()
-				display_last_image(latest_image_stream)
+				display_last_image(latest_image_string)
 				save_image(timestamp, just_capture)
 		else:
 			enter = False

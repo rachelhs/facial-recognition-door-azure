@@ -203,6 +203,7 @@ while(True):
 			detected_gender = detected_faces[0].face_attributes.gender
 			if (detected_gender == gender and detected_age == age):
 				enter = True
+				print('enter')
 				GPIO.output(37, GPIO.LOW)
 				access_granted_display(latest_image_string)
 				time.sleep(20)
@@ -214,6 +215,7 @@ while(True):
 				pass
 		else:
 			enter = False
+			print('do not enter')
 			display_last_cat()
 			display_last_image(latest_image_string)
 			pass

@@ -159,6 +159,7 @@ while(True):
 		print("new persona selected")
 		age, gender = random_persona()
 		print(age, gender)
+		set_background(gender)
 		display_target_cat()
 
 	#magnets normally on

@@ -188,9 +188,8 @@ while(True):
 		break
 
     #how often to take a picture and analyse
-	frequency = 10
+	frequency = 2
 	if(timestamp%(frequency*10) == 0):
-		save_image(timestamp, just_capture)
 		latest_image_stream, latest_image_string = latest_file()
 		display_last_image(latest_image_string)
 
@@ -212,12 +211,16 @@ while(True):
 				age, gender = random_persona()
 				set_background(gender)
 				display_target_cat()
+				save_image(timestamp, just_capture)
+
 				pass
 		else:
 			enter = False
 			print('do not enter')
 			display_last_cat()
 			display_last_image(latest_image_string)
+			save_image(timestamp, just_capture)
+
 			pass
 
 cap.release()

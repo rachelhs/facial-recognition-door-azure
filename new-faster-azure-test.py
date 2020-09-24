@@ -106,6 +106,7 @@ def display_last_cat():
 	detected_int_age = int(detected_age)
 	last_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{detected_int_age}")
 	background[520:(520+35), 288:(288+60)] = last_age_text
+	print(detected_gender, detected_age)
 
 #display last photo
 def display_last_image(latest_image_string):
@@ -187,17 +188,19 @@ while(True):
 	if cv2.waitKey(1) & 0xFF == ord('q'):
 		break
 
-    #how often to take a picture and analyse
+    # how often to send an image to api for analysis, frequency in seconds
 	frequency = 2
 	if(timestamp%(frequency*10) == 0):
+		# take the most recent image
 		latest_image_stream, latest_image_string = latest_file()
-		display_last_image(latest_image_string)
 
-		# Detect a face in an image that contains a single face
+		# detect a face in an image that contains a single face
 		detected_faces = face_client.face.detect_with_stream(latest_image_stream, return_face_attributes=['age', 'gender'])
 
 		if (detected_faces):
 			print('detecting face', timestamp)
+			# display the categorised image
+			display_last_image(latest_image_string)
 			detected_age = detected_faces[0].face_attributes.age
 			detected_gender = detected_faces[0].face_attributes.gender
 			if (detected_gender == gender and detected_age == age):
@@ -219,13 +222,12 @@ while(True):
 				enter = False
 				print('do not enter')
 				display_last_cat()
-				display_last_image(latest_image_string)
 				save_image(timestamp, just_capture)
 		else:
 			enter = False
-			print('do not enter')
-			display_last_cat()
+			print('face not detected')
 			display_last_image(latest_image_string)
+			display_last_cat()
 			save_image(timestamp, just_capture)
 
 			pass

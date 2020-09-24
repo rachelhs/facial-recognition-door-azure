@@ -226,6 +226,8 @@ while(True):
 		else:
 			enter = False
 			print('face not detected')
+			detected_age = 0
+			detected_gender = 'none'
 			display_last_image(latest_image_string)
 			display_last_cat()
 			save_image(timestamp, just_capture)

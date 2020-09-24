@@ -214,6 +214,13 @@ while(True):
 				save_image(timestamp, just_capture)
 
 				pass
+
+			else: 
+				enter = False
+				print('do not enter')
+				display_last_cat()
+				display_last_image(latest_image_stream)
+				save_image(timestamp, just_capture)
 		else:
 			enter = False
 			print('do not enter')

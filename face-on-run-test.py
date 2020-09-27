@@ -215,6 +215,7 @@ while(True):
 				generate_green_background = True
 				access_granted_display(latest_image_string)
 				enter = True
+				time.sleep(2)
 				GPIO.output(37, GPIO.LOW)
 				time.sleep(2)
 				# reset white background after 15 seconds

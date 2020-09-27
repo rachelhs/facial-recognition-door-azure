@@ -21,7 +21,7 @@ KEY = os.environ['FACE_SUBSCRIPTION_KEY']
 ENDPOINT = os.environ['FACE_ENDPOINT']
 
 #set initial age and gender states
-age = 30
+age = 31
 gender = "female"
 detected_age = 0
 detected_gender = "none"
@@ -220,7 +220,7 @@ while(True):
 				enter = True
 				# reset white background after 20 seconds
 				# choose a new random persona
-				frequency2 = 10
+				frequency2 = 8
 				if(timestamp%(frequency2*10) == 0):
 					generate_green_background = False
 					age, gender = random_persona()
@@ -229,6 +229,7 @@ while(True):
 					save_image(timestamp, just_capture)
 
 					pass
+				pass
 
 			else: 
 				enter = False

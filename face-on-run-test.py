@@ -61,7 +61,7 @@ def set_background(gender):
 		background = cv2.imread('new-m-w.png')
 
 # call function immediately
-age, gender = random_persona()
+# age, gender = random_persona()
 print(age, gender)
 set_background(gender)
 

@@ -27,6 +27,7 @@ detected_age = 0
 detected_gender = "none"
 enter = False
 fontsize = 23
+global green_background
 
 #select random persona on start and after accepted
 def random_persona():
@@ -121,7 +122,7 @@ def display_last_image(latest_image_string):
 
 #display yes / no box
 def access_granted_display(latest_image_string):
-	global green_background
+	#global green_background
 	target_age_text = GenerateText((35, 20), fontsize, '#0f0', 'black', f"{age}")
 
 	latest_image = cv2.imread(latest_image_string)
@@ -211,8 +212,8 @@ while(True):
 			detected_age = detected_faces[0].face_attributes.age
 			detected_gender = detected_faces[0].face_attributes.gender
 			if (detected_gender == gender and detected_age == age):
-				access_granted_display(latest_image_string)
 				enter = True
+				access_granted_display(latest_image_string)
 				print('enter')
 				GPIO.output(37, GPIO.LOW)
 				time.sleep(20)

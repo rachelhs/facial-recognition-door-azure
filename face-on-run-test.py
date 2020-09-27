@@ -219,14 +219,12 @@ while(True):
 				time.sleep(2)
 				# reset white background after 15 seconds
 				# choose a new random persona
-				frequency2 = 15
-				if(timestamp%(frequency2*10) == 0):
-					generate_green_background = False
-					age, gender = random_persona()
-					set_background(gender)
-					display_target_cat()
-					save_image(timestamp, just_capture)
-					pass
+				generate_green_background = False
+				age, gender = random_persona()
+				set_background(gender)
+				display_target_cat()
+				save_image(timestamp, just_capture)
+				pass
 
 			else: 
 				enter = False

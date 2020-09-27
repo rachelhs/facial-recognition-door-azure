@@ -213,8 +213,9 @@ while(True):
 			detected_gender = detected_faces[0].face_attributes.gender
 			if (detected_gender == gender and detected_age == age):
 				generate_green_background = True
+				print('before', timestamp)
 				access_granted_display(latest_image_string)
-				time.sleep(2)
+				print('after', timestamp)
 				enter = True
 				print('enter')
 				GPIO.output(37, GPIO.LOW)

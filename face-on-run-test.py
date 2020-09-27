@@ -27,7 +27,7 @@ detected_age = 0
 detected_gender = "none"
 enter = False
 fontsize = 23
-global green_background
+generate_green_background = False
 
 #select random persona on start and after accepted
 def random_persona():
@@ -122,7 +122,7 @@ def display_last_image(latest_image_string):
 
 #display yes / no box
 def access_granted_display(latest_image_string):
-	#global green_background
+	global green_background
 	target_age_text = GenerateText((35, 20), fontsize, '#0f0', 'black', f"{age}")
 
 	latest_image = cv2.imread(latest_image_string)
@@ -136,7 +136,7 @@ def access_granted_display(latest_image_string):
 	layered_img = cv2.add(last_img, green_mask)
 	layered_img_2 = cv2.bitwise_and(layered_img,access_granted_image_alpha)
 
-	if (enter == True):
+	if (generate_green_background == True):
 		if (gender == 'female'):
 			green_background = cv2.imread('female-green-stretched.png')
 			green_background[120:(120+last_photo_height), 25: (25+last_photo_width)] = layered_img_2
@@ -212,11 +212,14 @@ while(True):
 			detected_age = detected_faces[0].face_attributes.age
 			detected_gender = detected_faces[0].face_attributes.gender
 			if (detected_gender == gender and detected_age == age):
-				enter = True
+				generate_green_background = True
 				access_granted_display(latest_image_string)
+				time.sleep(2)
+				enter = True
 				print('enter')
 				GPIO.output(37, GPIO.LOW)
 				time.sleep(20)
+				generate_green_background = False
 				# reset white background after 20 seconds
 				# choose a new random persona
 				age, gender = random_persona()

@@ -217,9 +217,10 @@ while(True):
 				access_granted_display(latest_image_string)
 				print('after', timestamp)
 				enter = True
+				time.sleep(5)
 				print('enter')
 				GPIO.output(37, GPIO.LOW)
-				time.sleep(20)
+				time.sleep(5)
 				generate_green_background = False
 				# reset white background after 20 seconds
 				# choose a new random persona

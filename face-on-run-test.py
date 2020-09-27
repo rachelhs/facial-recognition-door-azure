@@ -214,13 +214,12 @@ while(True):
 			if (detected_gender == gender and detected_age == age):
 				generate_green_background = True
 				access_granted_display(latest_image_string)
-				print('before magnet', timestamp)
-				GPIO.output(37, GPIO.LOW)
-				print('after magnet', timestamp)
 				enter = True
+				GPIO.output(37, GPIO.LOW)
+				time.sleep(2)
 				# reset white background after 15 seconds
 				# choose a new random persona
-				frequency2 = 20
+				frequency2 = 15
 				if(timestamp%(frequency2*10) == 0):
 					generate_green_background = False
 					age, gender = random_persona()

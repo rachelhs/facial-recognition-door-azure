@@ -188,6 +188,7 @@ while(True):
 	# choose which background to display
 	if (enter == True):
 		cv2.imshow('Target', green_background)
+		time.sleep(10)
 	else:
 		#display live cam feed to screen, quit if q pressed
 		cv2.imshow('Target', background)
@@ -216,11 +217,9 @@ while(True):
 				print('before', timestamp)
 				access_granted_display(latest_image_string)
 				print('after', timestamp)
-				enter = True
-				time.sleep(5)
 				print('enter')
 				GPIO.output(37, GPIO.LOW)
-				time.sleep(5)
+				enter = True
 				generate_green_background = False
 				# reset white background after 20 seconds
 				# choose a new random persona

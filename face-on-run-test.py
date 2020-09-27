@@ -228,9 +228,9 @@ while(True):
 					display_target_cat()
 					save_image(timestamp, just_capture)
 
-					break
+					pass
 
-				pass
+				
 
 			else: 
 				enter = False

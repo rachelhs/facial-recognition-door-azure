@@ -218,9 +218,9 @@ while(True):
 				GPIO.output(37, GPIO.LOW)
 				print('after magnet', timestamp)
 				enter = True
-				# reset white background after 20 seconds
+				# reset white background after 15 seconds
 				# choose a new random persona
-				frequency2 = 8
+				frequency2 = 15
 				if(timestamp%(frequency2*10) == 0):
 					generate_green_background = False
 					age, gender = random_persona()
@@ -228,7 +228,8 @@ while(True):
 					display_target_cat()
 					save_image(timestamp, just_capture)
 
-					pass
+					break
+
 				pass
 
 			else: 

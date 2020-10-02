@@ -32,7 +32,7 @@ age_range = "0-10"
 
 #select random persona on start and after accepted
 def random_persona():
-	gender = random.choice(['female', 'male', 'genderless'])
+	gender = random.choice(['female', 'male'])
 	age = random.randint(1, 5)
 
 	global age_range_bottom
@@ -83,13 +83,13 @@ def set_background(gender):
 	# sets white background image with target gender highlighted and static text
 	global background
 	if (gender == 'female'):
-		background = cv2.imread('new-f-w.png')	
+		background = cv2.imread('w-bg-female.png')	
 
 	elif (gender == 'genderless'):
-		background = cv2.imread('new-g-w.png')
+		background = cv2.imread('w-bg-genderless.png')
 
 	else:
-		background = cv2.imread('new-m-w.png')
+		background = cv2.imread('w-bg-male.png')
 
 # call function immediately
 age, gender = random_persona()
@@ -270,9 +270,9 @@ while(True):
 		else:
 			enter = False
 			print('face not detected')
-			detected_age = 0
-			detected_gender = 'none'
-			display_last_image(latest_image_string)
+			detected_age = ''
+			detected_gender = ''
+			#display_last_image(latest_image_string)
 			display_last_cat()
 			save_image(timestamp, just_capture)
 			pass

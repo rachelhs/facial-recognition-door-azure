@@ -134,7 +134,10 @@ def display_target_cat():
 def display_last_cat():
 	last_gender_text = GenerateText((143, 25), fontsize, 'white', 'black', f"{detected_gender}")
 	background[520:(520+25), 100:(100+143)] = last_gender_text
-	detected_int_age = int(detected_age)
+	if (detected_age > 0):
+		detected_int_age = int(detected_age)
+	else:
+		detected_int_age = ''
 	last_age_text = GenerateText((60, 35), fontsize, 'white', 'black', f"{detected_int_age}")
 	background[520:(520+35), 288:(288+60)] = last_age_text
 	print(detected_gender, detected_age)

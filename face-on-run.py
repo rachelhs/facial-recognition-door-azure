@@ -29,13 +29,15 @@ enter = False
 fontsize = 23
 generate_green_background = False
 age_range = "0-10"
-age_range_bottom = 0
-age_range_top = 10
 
 #select random persona on start and after accepted
 def random_persona():
 	gender = random.choice(['female', 'male', 'genderless'])
 	age = random.randint(1, 5)
+
+	global age_range_bottom
+	global age_range_top
+	
 	if (age == 1):
 		age_range = "0-10"
 		age_range_bottom = 0

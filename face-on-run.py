@@ -194,6 +194,8 @@ while(True):
 		#(height, width, channels) = background.shape
 		
 	if cv2.waitKey(1) & 0xFF == ord('q'):
+		# turn magents off when programme not running
+		GPIO.output(37, GPIO.LOW)
 		break
 
     # how often to send an image to api for analysis, frequency in seconds

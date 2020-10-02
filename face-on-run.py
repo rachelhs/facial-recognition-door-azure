@@ -27,7 +27,7 @@ detected_age = 0
 detected_gender = "none"
 enter = False
 fontsize = 23
-generate_green_background = False
+generate_green_background = True
 age_range = "0-10"
 
 #select random persona on start and after accepted
@@ -37,7 +37,7 @@ def random_persona():
 
 	global age_range_bottom
 	global age_range_top
-	
+
 	if (age == 1):
 		age_range = "0-10"
 		age_range_bottom = 0
@@ -174,9 +174,13 @@ def access_granted_display(latest_image_string):
 
 		elif (gender == 'genderless'):
 			green_background = cv2.imread('genderless-green-stretched.png')
+			green_background[120:(120+last_photo_height), 25: (25+last_photo_width)] = layered_img_2
+			green_background[46: (46+20) ,717: (717+35)] = target_age_text
 
 		else:
 			green_background = cv2.imread('male-green-stretched.png')
+			green_background[120:(120+last_photo_height), 25: (25+last_photo_width)] = layered_img_2
+			green_background[46: (46+20) ,717: (717+35)] = target_age_text
 	else:
 		pass
 

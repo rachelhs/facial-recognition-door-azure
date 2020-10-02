@@ -28,12 +28,40 @@ detected_gender = "none"
 enter = False
 fontsize = 23
 generate_green_background = False
+age_range = "0-10"
+age_range_bottom = 0
+age_range_top = 10
 
 #select random persona on start and after accepted
 def random_persona():
 	gender = random.choice(['female', 'male', 'genderless'])
-	age = random.randint(12, 80)
-	return age, gender
+	age = random.randint(1, 5)
+	if (age == 1):
+		age_range = "0-10"
+		age_range_bottom = 0
+		age_range_top = 10
+
+	else if (age == 2):
+		age_range = "11-25"
+		age_range_bottom = 11
+		age_range_top = 25
+
+	else if (age == 3):
+		age_range = "26 - 40"
+		age_range_bottom = 26
+		age_range_top = 40
+
+	else if (age == 4):
+		age_range = "41 - 55"
+		age_range_bottom = 41
+		age_range_top = 55
+
+	else if (age == 5):
+		age_range = "56 - 70"
+		age_range_bottom = 56
+		age_range_top = 70
+
+	return age_range, gender
 
 #draw background for display (mode, (w, h), colour)
 canvas = Image.new('RGB', (800, 600), (255, 255, 255))
@@ -213,7 +241,7 @@ while(True):
 			display_last_image(latest_image_string)
 			detected_age = detected_faces[0].face_attributes.age
 			detected_gender = detected_faces[0].face_attributes.gender
-			if (detected_gender == gender and detected_age == age):
+			if (detected_gender == gender and detected_age >= age_range_bottom and detected_age <= age_range_top):
 				generate_green_background = True
 				access_granted_display(latest_image_string)
 				enter = True

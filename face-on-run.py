@@ -41,22 +41,22 @@ def random_persona():
 		age_range_bottom = 0
 		age_range_top = 10
 
-	else if (age == 2):
+	elif (age == 2):
 		age_range = "11-25"
 		age_range_bottom = 11
 		age_range_top = 25
 
-	else if (age == 3):
+	elif (age == 3):
 		age_range = "26 - 40"
 		age_range_bottom = 26
 		age_range_top = 40
 
-	else if (age == 4):
+	elif (age == 4):
 		age_range = "41 - 55"
 		age_range_bottom = 41
 		age_range_top = 55
 
-	else if (age == 5):
+	elif (age == 5):
 		age_range = "56 - 70"
 		age_range_bottom = 56
 		age_range_top = 70

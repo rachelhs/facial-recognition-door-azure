@@ -128,7 +128,7 @@ def latest_file():
 #display target age and target gender
 def display_target_cat():
 	target_age_text = GenerateText((80, 20), 21, 'white', 'black', f"{age}")
-	background[46: (46+20) ,680: (680+80)] = target_age_text
+	background[48: (48+20) ,690: (690+80)] = target_age_text
 
 #display age and gender from last photo categorisation
 def display_last_cat():

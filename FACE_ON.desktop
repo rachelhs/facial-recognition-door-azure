@@ -3,5 +3,5 @@ Version=1.1
 Type=Application
 Encoding=UTF-8
 Name=Face On
-Exec=python3 face-on-run.py
+Exec=cd facial-recognition-azure python3 face-on-run.py
 Terminal=false

@@ -1,7 +1,5 @@
 [Desktop Entry]
-Version=1.1
 Type=Application
-Encoding=UTF-8
-Name=Face On
-Exec=cd facial-recognition-azure python3 face-on-run.py
-Terminal=false
+Name=FACE / ON
+Exec=/home/pi/facial-recognition-azure/face-on-run.py
+terminal=false

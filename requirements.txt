@@ -65,4 +65,4 @@ ssh-import-id==5.7
 sysv-ipc==1.0.1
 tendo==0.2.15
 uritemplate==3.0.1
-urllib3==1.25.8
+urllib3==1.26.5

@@ -44,7 +44,7 @@ pyasn1-modules==0.2.8
 pycparser==2.19
 pyftdi==0.43.0
 PyGObject==3.30.4
-PyJWT==1.6.4
+PyJWT==2.4.0
 pyky040==0.1.4
 pyserial==3.4
 python-apt==1.8.4
